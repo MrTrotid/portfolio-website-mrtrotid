@@ -1,6 +1,7 @@
 // Type definition for project data structure
 export type Project = {
   name: string;
+  slug: string;
   summary: string | string[];
   href: string;
   image: string;
@@ -32,6 +33,15 @@ export type Leadership = {
 export type Achievement = {
   title: string;
   detail: string;
+};
+
+// Type definition for certification data structure
+export type Certification = {
+  name: string;
+  issuer: string;
+  date: string;
+  description: string;
+  category: string;
 };
 
 // Main profile data object containing all portfolio information
@@ -68,6 +78,7 @@ export const profile = {
   projects: [
     {
       name: "AQ Sentinel",
+      slug: "aq-sentinel",
       summary: [
         "**Problem:** Real-time air quality monitoring was inaccessible due to expensive hardware.",
         "**Action:** Built an IoT solution combining an ESP32 microcontroller with a custom React/Node.js web app to process sensor telemetry.",
@@ -80,6 +91,7 @@ export const profile = {
     },
     {
       name: "MeroAushadhi",
+      slug: "mero-aushadhi",
       summary: [
         "**Problem:** Medical information was largely inaccessible and difficult to understand for Nepali-speaking users.",
         "**Action:** Developed a comprehensive medicine information application integrating Google Generative AI, Flowise, and Supabase.",
@@ -92,6 +104,7 @@ export const profile = {
     },
     {
       name: "Sherlock Scramble Solver",
+      slug: "sherlock-scramble-solver",
       summary: [
         "**Problem:** Manually finding hidden words in large 15x15 grids was tedious and time-consuming.",
         "**Action:** Engineered an intelligent algorithm utilizing advanced pattern matching and optimized data structures.",
@@ -204,6 +217,43 @@ export const profile = {
         "Secured 1st place in the St. Xavier College intra-college STEAM exhibition during A levels.",
     },
   ] as Achievement[],
+  certifications: [
+    {
+      name: "Networking Basics",
+      issuer: "Cisco",
+      date: "Mar 2026",
+      description: "Completed Cisco Networking Basics course covering fundamental networking concepts, protocols, and infrastructure.",
+      category: "Networking",
+    },
+    {
+      name: "Introduction to Cybersecurity",
+      issuer: "Cisco",
+      date: "Aug 2025",
+      description: "Completed Cisco Introduction to Cybersecurity course covering essential security concepts and threat landscape.",
+      category: "Security",
+    },
+    {
+      name: "Complexity Calculation",
+      issuer: "Programiz",
+      date: "Aug 2024",
+      description: "Completed Complexity Calculation course covering time and space complexity analysis.",
+      category: "Programming",
+    },
+    {
+      name: "3rd Place — Cambridge Code League",
+      issuer: "Cambridge",
+      date: "Feb 2025",
+      description: "Secured 3rd place with 'Mero Audhashi,' a health-focused project in Cambridge Code League hackathon.",
+      category: "Programming",
+    },
+    {
+      name: "Introduction To Cybersecurity and Cloud Computing",
+      issuer: "Educational Institution",
+      date: "Aug 2025",
+      description: "Completed hands-on AWS labs and learned core cybersecurity principles and practices.",
+      category: "Cloud",
+    },
+  ] as Certification[],
   links: {
     certifications: "https://certifications.bamanguragain.com.np",
     projects: "https://projects.bamanguragain.com.np",

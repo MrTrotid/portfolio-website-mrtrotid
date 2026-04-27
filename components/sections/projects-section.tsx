@@ -7,6 +7,8 @@ import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
 // Imports React useState hook
 import { useState } from 'react';
+// Imports Next.js useRouter hook for navigation
+import { useRouter } from 'next/navigation';
 // Imports HackerType typewriter component
 import { HackerType } from '@/components/cinematic/hacker-type';
 // Imports Magnetic component for cursor effect
@@ -24,6 +26,7 @@ type ProjectsSectionProps = {
 
 // Projects section with carousel display
 export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps) => {
+  const router = useRouter();
   // State for current project index
   const [currentIndex, setCurrentIndex] = useState(0);
   const currentProject = projects[currentIndex];
@@ -47,9 +50,9 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
   // State for carousel direction
   const [direction, setDirection] = useState(1);
 
-  // Open current project in new tab
+  // Open current project case study page
   const openCurrentProject = () => {
-    window.open(currentProject.href, '_blank', 'noopener,noreferrer');
+    router.push(`/projects/${currentProject.slug}` as any);
   };
 
   return (
@@ -64,7 +67,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
         className="mx-auto max-w-6xl"
       >
         {/* Header with title */}
-        <motion.div variants={cinematicReveal} className="flex flex-row items-center justify-between gap-4" data-title-track>
+        <motion.div variants={cinematicReveal} className="flex flex-row items-center justify-between gap-4 w-full" data-title-track>
           {/* Terminal command */}
           <p className="terminal-prompt text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
             <span className="text-[#8b949e]">$</span> <HackerType text="ls -la my_projects/" />
@@ -84,7 +87,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
         </motion.div>
 
         {/* Navigation controls */}
-        <motion.div variants={panelRise} className="mt-[22px] flex items-center justify-center gap-3">
+        <motion.div variants={panelRise} className="mt-6 sm:mt-8 flex items-center justify-center gap-3">
           {/* Previous button */}
           <Magnetic strength={10}>
             <button

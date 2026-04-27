@@ -31,6 +31,8 @@ const buildCsp = (nonce: string) => {
       "form-action 'self'",
       "object-src 'none'",
       "upgrade-insecure-requests",
+      "report-uri /api/csp-report",
+      "report-to default",
   ];
 
   return directives.join('; ');
@@ -48,7 +50,7 @@ const generateNonce = () => {
 const applySecurityHeaders = (response: NextResponse, nonce: string) => {
   response.headers.set('Content-Security-Policy', buildCsp(nonce));
   response.headers.set('X-Nonce', nonce);
-  response.headers.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
   response.headers.set('X-Frame-Options', 'DENY');
   response.headers.set('X-Content-Type-Options', 'nosniff');
   response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
@@ -58,10 +60,12 @@ const applySecurityHeaders = (response: NextResponse, nonce: string) => {
   response.headers.set('X-Permitted-Cross-Domain-Policies', 'none');
   response.headers.set('Origin-Agent-Cluster', '?1');
   response.headers.set('X-DNS-Prefetch-Control', 'on');
+  response.headers.set('X-Robots-Tag', 'index, follow');
+  response.headers.set('Report-To', '{"group":"default","max_age":31536000,"endpoints":[{"url":"https://your-endpoint.com/csp-report"}],"include_subdomains":true}');
   response.headers.delete('Access-Control-Allow-Origin');
 };
 
-export const proxy = (request: NextRequest) => {
+export const middleware = (request: NextRequest) => {
   const nonce = generateNonce();
   const hostname = request.headers.get('host');
 

@@ -8,6 +8,8 @@ import { AchievementsSection } from "@/components/sections/achievements-section"
 import { ContactSection } from "@/components/sections/contact-section";
 // Imports ExperienceSection component for work experience
 import { ExperienceSection } from "@/components/sections/experience-section";
+// Imports CertificationsSection component for certifications
+import { CertificationsSection } from "@/components/sections/certifications-section";
 // Imports HeroSection component for the main hero area
 import { HeroSection } from "@/components/sections/hero-section";
 // Imports LeadershipSection component for leadership roles
@@ -63,6 +65,13 @@ const Page = () => {
       {/* Experience section with timeline */}
       <div id="experience" data-panel>
         <ExperienceSection items={[...profile.experience]} />
+      </div>
+      {/* Certifications section */}
+      <div id="certifications" data-panel>
+        <CertificationsSection 
+          items={[...profile.certifications]} 
+          certificationsUrl={profile.links.certifications}
+        />
       </div>
       {/* Leadership section with organization cards */}
       <div data-panel>

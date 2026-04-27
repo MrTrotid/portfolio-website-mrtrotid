@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+echo "Running pre-push checks (typecheck and tests)..."
+npm run typecheck
+npm test

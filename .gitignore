@@ -30,3 +30,9 @@ coverage/
 # Misc
 *.swp
 *.swo
+# TypeScript build cache
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Reference files
+*.reference.png

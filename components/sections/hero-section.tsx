@@ -28,7 +28,7 @@ type HeroSectionProps = {
 const sideLinks = [
   { href: "#projects", label: "Projects" },
   { href: "#experience", label: "Experience" },
-  { href: "#contact", label: "Contact" },
+  { href: "#certifications", label: "Certifications" },
 ];
 
 // Hero section component - main landing area
@@ -203,7 +203,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
                   aria-label="Instagram"
                 >
                   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden>
-                    <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.8A3.95 3.95 0 003.8 7.75v8.5a3.95 3.95 0 003.95 3.95h8.5a3.95 3.95 0 003.95-3.95v-8.5a3.95 3.95 0 00-3.95-3.95h-8.5zm8.9 1.35a1.15 1.15 0 110 2.3 1.15 1.15 0 010-2.3zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.8a3.2 3.2 0 100 6.4 3.2 3.2 0 000-6.4z" />
+                    <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.8A3.95 3.95 0 003.8 7.75v8.5a3.95 3.95 0 003.95 3.95h8.5a3.95 3.95 0 003.95-3.95v-8.5a3.95 3.95 0 00-3.95-3.95h-8.5zm8.9 1.35a1.15 1.15 0 110 2.3 1.15 1.15 0 010-2.3zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.8a3.2 3.2 0 100 6.4 3.2 3.2 0 000-6.4z" />
                   </svg>
                 </a>
               </Magnetic>
