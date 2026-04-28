@@ -2,8 +2,6 @@
 import type { MetadataRoute } from 'next';
 // Imports site URL from lib
 import { siteUrl } from '@/lib/site';
-// Imports profile for dynamic routes
-import { profile } from '@/lib/profile';
 
 // Strips trailing slash from base URL
 const base = siteUrl.replace(/\/$/, '');
@@ -39,12 +37,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const projectRoutes: MetadataRoute.Sitemap = profile.projects.map((project) => ({
-    url: `${base}/projects/${project.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.9,
-  }));
-
-  return [...baseRoutes, ...projectRoutes];
+  return baseRoutes;
 }
