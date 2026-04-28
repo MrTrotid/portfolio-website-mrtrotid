@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: '%s | Baman Prasad Guragain (MrTrotid)',
   },
   description:
-    'Official portfolio of Baman Prasad Guragain (MrTrotid), a cybersecurity enthusiast and creative developer building secure web experiences.',
+    'Cybersecurity enthusiast and creative developer from Nepal. Building secure, modern web apps and exploring the threat landscape. View my latest projects!',
   category: 'technology',
   applicationName: "Baman Prasad Guragain Portfolio",
   keywords: [
