@@ -2,38 +2,23 @@ import { NextRequest, NextResponse } from 'next/server';
 import { siteUrl } from '@/lib/site';
 
 const buildCsp = (nonce: string) => {
-  if (process.env.NODE_ENV !== 'production') {
-    const devDirectives = [
-      "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: data:",
-      "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: https:",
-      "font-src 'self' data:",
-      "connect-src 'self' ws: wss: http: https:",
-      "frame-ancestors 'none'",
-      "base-uri 'self'",
-      "form-action 'self'",
-      "object-src 'none'",
-    ];
-
-    return devDirectives.join('; ');
-  }
-
-    const directives = [
-      "default-src 'self'",
-      `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https:`,
-      "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: https:",
-      "font-src 'self' data:",
-      "connect-src 'self' https:",
-      "frame-ancestors 'none'",
-      "base-uri 'self'",
-      "form-action 'self'",
-      "object-src 'none'",
-      "upgrade-insecure-requests",
-      "report-uri /api/csp-report",
-      "report-to default",
+  const directives = [
+    "default-src 'self'",
+    `script-src 'self' 'unsafe-eval' 'unsafe-inline' https:`,
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data: https:",
+    "font-src 'self' data:",
+    "connect-src 'self' https: wss: ws:",
+    "frame-ancestors 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "object-src 'none'",
   ];
+
+  if (process.env.NODE_ENV === 'production') {
+    directives.push("upgrade-insecure-requests");
+    directives.push("report-uri /api/csp-report");
+  }
 
   return directives.join('; ');
 };
