@@ -20,6 +20,8 @@ import { ProjectsSection } from "@/components/sections/projects-section";
 import { SkillsSection } from "@/components/sections/skills-section";
 // Imports WhatIDoSection component for listing what I do
 import { WhatIDoSection } from "@/components/sections/what-i-do-section";
+// Imports FooterSection component
+import { FooterSection } from "@/components/sections/footer-section";
 // Imports profile data containing all portfolio information
 import { profile } from "@/lib/profile";
 
@@ -86,6 +88,9 @@ const Page = () => {
       <div id="contact" data-panel>
         <ContactSection links={profile.links} />
       </div>
+
+      {/* Footer */}
+      <FooterSection />
     </main>
   );
 };

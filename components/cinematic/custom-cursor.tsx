@@ -51,14 +51,17 @@ export const CustomCursor = () => {
         return "View Details";
       }
 
-      // Check for anchor links
-      if (target instanceof HTMLAnchorElement) {
-        const href = target.getAttribute("href") ?? "";
-        if (href.startsWith("#")) {
-          return "Scroll";
-        }
-        return "Open Link";
-      }
+       // Check for anchor links
+       if (target instanceof HTMLAnchorElement) {
+         const href = target.getAttribute("href") ?? "";
+         if (href === "#top") {
+           return "Back to Top";
+         }
+         if (href.startsWith("#")) {
+           return "Scroll";
+         }
+         return "Open Link";
+       }
 
       // Check for buttons
       if (
@@ -80,10 +83,20 @@ export const CustomCursor = () => {
     update();
     query.addEventListener("change", update);
 
-    // Mouse move handler - updates cursor position
-    const move = (event: MouseEvent) => {
-      x.set(event.clientX);
-      y.set(event.clientY);
+     // Mouse move handler - updates cursor position with bounds checking
+     const move = (event: MouseEvent) => {
+       // Bounds checking - hide cursor if outside viewport
+       const isOutsideX = event.clientX < 0 || event.clientX > window.innerWidth;
+       const isOutsideY = event.clientY < 0 || event.clientY > window.innerHeight;
+       
+       if (isOutsideX || isOutsideY) {
+         x.set(-100);
+         y.set(-100);
+         return;
+       }
+       
+       x.set(event.clientX);
+       y.set(event.clientY);
       const target = event.target;
       // Finds closest interactive element
       const hot =
@@ -118,22 +131,29 @@ export const CustomCursor = () => {
       });
     };
 
-    // Mouse leave handler - hides cursor
-    const leave = () => {
-      x.set(-100);
-      y.set(-100);
-      setInteractive(false);
-      interactiveRef.current = false;
-      setLabel("");
-      labelRef.current = "";
-    };
+     // Mouse leave handler - hides cursor when mouse leaves window
+     const leave = (event: MouseEvent) => {
+       // Only hide cursor if mouse actually left the window
+       if (
+         event.relatedTarget === null ||
+         !(event.relatedTarget instanceof Node) ||
+         !document.body.contains(event.relatedTarget as Node)
+       ) {
+         x.set(-100);
+         y.set(-100);
+         setInteractive(false);
+         interactiveRef.current = false;
+         setLabel("");
+         labelRef.current = "";
+       }
+     };
 
     // Event listeners
-    window.addEventListener("mousemove", move);
-    window.addEventListener("scroll", updateScrollHint, { passive: true });
-    window.addEventListener("resize", updateScrollHint);
-    document.addEventListener("mouseleave", leave);
-    updateScrollHint();
+       window.addEventListener("mousemove", move);
+       window.addEventListener("scroll", updateScrollHint, { passive: true });
+       window.addEventListener("resize", updateScrollHint);
+       document.addEventListener("mouseout", leave);
+       updateScrollHint();
 
     // Cleanup
     return () => {

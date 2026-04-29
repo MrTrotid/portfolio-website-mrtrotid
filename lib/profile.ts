@@ -98,22 +98,22 @@ export const profile = {
         "**Result:** Made complex medical data accessible, understandable, and actionable in native Nepali.",
       ],
       href: "https://projects.bamanguragain.com.np",
-      image: "/projects/portfolio.png",
+      image: "/projects/meroaushadhi.png",
       year: "2025",
       tags: ["React", "Google Generative AI", "Flowise", "Supabase"],
     },
     {
-      name: "Sherlock Scramble Solver",
-      slug: "sherlock-scramble-solver",
+      name: "A-Level Past Paper Extractor",
+      slug: "a-level-past-paper-extractor",
       summary: [
-        "**Problem:** Manually finding hidden words in large 15x15 grids was tedious and time-consuming.",
-        "**Action:** Engineered an intelligent algorithm utilizing advanced pattern matching and optimized data structures.",
-        "**Result:** Achieved millisecond resolution times, successfully finding all hidden words efficiently.",
+        "**Problem:** Students had difficulty accessing and organizing Cambridge International A-Level past papers efficiently.",
+        "**Action:** Built a Python desktop application using tkinter and customtkinter that automates downloading papers from BestExamHelp based on subject, year, and paper type.",
+        "**Result:** Users can now easily select subjects, choose years (2021-2024), filter by paper type, and download papers organized in structured folders."
       ],
       href: "https://projects.bamanguragain.com.np",
-      image: "/projects/portfolio.png",
+      image: "/projects/alevelpastpaperextractor.png",
       year: "2024",
-      tags: ["Algorithms", "Grid Search", "Python"],
+      tags: ["Python", "tkinter", "customtkinter", "requests", "Pillow"]
     },
   ] as Project[],
   experience: [
@@ -205,7 +205,8 @@ export const profile = {
   achievements: [
     {
       title: "3rd Place in Cambridge Code League",
-      detail: "Achieved 3rd place in the Cambridge Code League A-levels hackathon.",
+      detail:
+        "Achieved 3rd place in the Cambridge Code League A-levels hackathon.",
     },
     {
       title: "Best UI/UX in Cambridge Code League",
@@ -222,35 +223,40 @@ export const profile = {
       name: "Networking Basics",
       issuer: "Cisco",
       date: "Mar 2026",
-      description: "Completed Cisco Networking Basics course covering fundamental networking concepts, protocols, and infrastructure.",
+      description:
+        "Completed Cisco Networking Basics course covering fundamental networking concepts, protocols, and infrastructure.",
       category: "Networking",
     },
     {
       name: "Introduction to Cybersecurity",
       issuer: "Cisco",
       date: "Aug 2025",
-      description: "Completed Cisco Introduction to Cybersecurity course covering essential security concepts and threat landscape.",
+      description:
+        "Completed Cisco Introduction to Cybersecurity course covering essential security concepts and threat landscape.",
       category: "Security",
     },
     {
       name: "Complexity Calculation",
       issuer: "Programiz",
       date: "Aug 2024",
-      description: "Completed Complexity Calculation course covering time and space complexity analysis.",
+      description:
+        "Completed Complexity Calculation course covering time and space complexity analysis.",
       category: "Programming",
     },
     {
       name: "3rd Place — Cambridge Code League",
       issuer: "Cambridge",
       date: "Feb 2025",
-      description: "Secured 3rd place with 'Mero Audhashi,' a health-focused project in Cambridge Code League hackathon.",
+      description:
+        "Secured 3rd place with 'Mero Audhashi,' a health-focused project in Cambridge Code League hackathon.",
       category: "Programming",
     },
     {
       name: "Introduction To Cybersecurity and Cloud Computing",
       issuer: "Educational Institution",
       date: "Aug 2025",
-      description: "Completed hands-on AWS labs and learned core cybersecurity principles and practices.",
+      description:
+        "Completed hands-on AWS labs and learned core cybersecurity principles and practices.",
       category: "Cloud",
     },
   ] as Certification[],

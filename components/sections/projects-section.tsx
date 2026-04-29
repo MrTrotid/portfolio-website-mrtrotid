@@ -126,8 +126,8 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="glass pointer-events-none hidden overflow-hidden rounded-2xl p-2 md:block md:p-3"
           >
-            <div className="relative h-28 overflow-hidden rounded-xl md:h-44">
-              <Image src={previous.image} alt={previous.name} fill sizes="22vw" className="object-cover opacity-80" loading="lazy" />
+            <div className="relative h-28 overflow-hidden rounded-xl bg-[#0a1a10] md:h-44">
+              <Image src={previous.image} alt={previous.name} fill sizes="22vw" className="object-contain opacity-80 p-1" loading="lazy" />
             </div>
             <p className="content-muted mt-2 truncate text-[10px] tracking-[0.14em] md:text-xs">{previous.name}</p>
           </motion.article>
@@ -155,13 +155,13 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
               data-cursor="project"
             >
               {/* Project image */}
-              <div className="relative h-56 overflow-hidden rounded-2xl border border-white/15 sm:h-64 md:h-72">
+              <div className="relative h-56 overflow-hidden rounded-2xl border border-white/15 bg-[#0a1a10] sm:h-64 md:h-72">
                 <Image
                   src={currentProject.image}
                   alt={currentProject.name}
                   fill
                   sizes="(max-width: 768px) 92vw, 850px"
-                  className="object-cover"
+                  className="object-contain p-2"
                   loading="lazy"
                 />
               </div>
@@ -217,8 +217,8 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="glass pointer-events-none hidden overflow-hidden rounded-2xl p-2 md:block md:p-3"
           >
-            <div className="relative h-28 overflow-hidden rounded-xl md:h-44">
-              <Image src={next.image} alt={next.name} fill sizes="22vw" className="object-cover opacity-80" loading="lazy" />
+            <div className="relative h-28 overflow-hidden rounded-xl bg-[#0a1a10] md:h-44">
+              <Image src={next.image} alt={next.name} fill sizes="22vw" className="object-contain opacity-80 p-1" loading="lazy" />
             </div>
             <p className="content-muted mt-2 truncate text-[10px] tracking-[0.14em] md:text-xs">{next.name}</p>
           </motion.article>

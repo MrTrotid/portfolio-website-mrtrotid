@@ -6,7 +6,7 @@ A modern, high-performance portfolio website built with Next.js, emphasizing typ
 
 ## Live Site
 
-- **Production URL:** [https://bamanguragain.com.np](https://bamanguragain.com.np)
+- **Production URL:** [https://www.bamanguragain.com.np](https://www.bamanguragain.com.np)
 
 ## Tech Stack
 
@@ -19,12 +19,19 @@ A modern, high-performance portfolio website built with Next.js, emphasizing typ
 
 ## Core Features
 
-- **Dedicated Project Case Studies:** Built via the Next.js App Router (`/projects/[slug]`), featuring individual server-rendered (SSG) case studies for enhanced SEO, in-depth context, and independent routing.
+- **Interactive Project Carousel:** Showcases featured projects with a custom carousel interface. Project images use `object-contain` for proper fitting. Clicking opens the full project on the external projects site.
 - **Interactive Certifications Grid:** A dynamic, filterable grid component built with Framer Motion, displaying an array of professional IT and Cybersecurity certifications (e.g., Cisco, AWS, Programiz).
-- **Strict Security Posture:** Enforced via Next.js Middleware (`middleware.ts`). Implements rigid Content Security Policy (CSP) headers, `report-uri`/`report-to` directives, and strict HSTS max-age to prevent XSS and man-in-the-middle attacks.
-- **Optimized SEO Architecture:** Robust metadata generation, semantic JSON-LD structures, targeted OpenGraph imagery, and automatic, priority-aware `sitemap.xml` / `robots.txt` generation.
-- **Performance & Typography:** Pre-rendered SSG/SSR pages delivering fully populated HTML over the wire. Styled consistently with the retro, terminal-styled `NDot-57` font across the application.
-- **Robust CI/CD Pipeline:** GitHub Actions workflow ensuring an unyielding fail-fast sequence (`lint` → `typecheck` → `build` → `unit tests` → `E2E tests`). Protected locally with Husky `pre-push` hooks.
+- **Simplified Footer:** Clean footer with copyright, "Back to Top" navigation link, and terminal-style closing message.
+- **Strict Security Posture:** Enforced via Next.js Middleware (`middleware.ts`). Implements rigid Content Security Policy (CSP) headers optimized for static Next.js sites, HSTS max-age, and XSS protection.
+- **Optimized SEO Architecture:** 
+  - Robust metadata generation with 150-160 char description targeting cybersecurity keywords
+  - Semantic JSON-LD structured data
+  - Targeted OpenGraph imagery (1200×630px)
+  - Automatic `sitemap.xml` / `robots.txt` generation with proper priorities
+  - Canonical URL configuration with 301 redirects from non-www to www
+- **Performance:** Pre-rendered SSG/SSR pages delivering fully populated HTML. Static imports for optimal code splitting (no hydration errors).
+- **Typography:** Styled consistently with the retro, terminal-styled `NDot-57` font across the application.
+- **Robust CI/CD Pipeline:** GitHub Actions workflow ensuring strict fail-fast sequence (`lint` → `typecheck` → `build` → `unit tests` → `E2E tests`). Protected locally with Husky `pre-push` hooks.
 
 ## Project Structure
 
@@ -32,19 +39,24 @@ A modern, high-performance portfolio website built with Next.js, emphasizing typ
 ├── app/
 │   ├── layout.tsx         # Root layout with global fonts and SEO
 │   ├── page.tsx           # Main landing page assembling UI sections
-│   ├── projects/[slug]/   # Dynamic routes for project case studies
 │   ├── robots.ts          # Dynamic robots.txt generation
 │   └── sitemap.ts         # Dynamic sitemap generation
 ├── components/
-│   ├── cinematic/         # Reusable animated UI elements (Magnetic, HackerType)
-│   └── sections/          # Major layout blocks (Hero, Projects, Certifications)
+│   ├── cinematic/         # Reusable animated UI elements (CustomCursor, HackerType, Magnetic)
+│   └── sections/          # Major layout blocks (Hero, Projects, Certifications, Footer)
 ├── lib/
 │   ├── motion/            # Shared Framer Motion animation variants
 │   ├── profile.ts         # Centralized data source for content (projects, certs)
-│   └── site.ts            # Site configuration variables
+│   └── site.ts            # Site configuration variables (www.bamanguragain.com.np)
 ├── public/                # Static assets, fonts, logos, and images
 └── middleware.ts          # Centralized Next.js middleware for security headers
 ```
+
+## Featured Projects
+
+- **A-Level Past Paper Extractor** - Python desktop app using tkinter/customtkinter for downloading Cambridge A-Level past papers
+- **AQ Sentinel** - IoT air quality monitoring solution with ESP32 and React/Node.js
+- **MeroAushadhi** - Medicine information app with Google Generative AI and Supabase
 
 ## Setup & Local Development
 
@@ -70,4 +82,4 @@ A modern, high-performance portfolio website built with Next.js, emphasizing typ
 
 ## Design Notes
 
-This project emphasizes terminal-styled realism without sacrificing accessibility. The `NDot-57` font heavily influences the uppercase/lowercase design language inherently, offering a distinct retro aesthetic.
+This project emphasizes terminal-styled realism without sacrificing accessibility. The `NDot-57` font heavily influences the uppercase/lowercase design language inherently, offering a distinct retro aesthetic. All project images are displayed with `object-contain` to ensure full visibility without cropping.
