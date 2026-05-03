@@ -33,11 +33,11 @@ const syne = Syne({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Baman Prasad Guragain (MrTrotid) | Cybersecurity Enthusiast & Creative Developer',
+    default: 'Baman Prasad Guragain (MrTrotid) | Cybersecurity Enthusiast',
     template: '%s | Baman Prasad Guragain (MrTrotid)',
   },
   description:
-    'Cybersecurity enthusiast and creative developer from Nepal. Building secure, modern web apps and exploring the threat landscape. View my latest projects!',
+    'Hey there this is my portfolio where you will find most of the things about me.',
   category: 'technology',
   applicationName: "Baman Prasad Guragain Portfolio",
   keywords: [
@@ -76,9 +76,9 @@ export const metadata: Metadata = {
       "pending-google-verification-token",
   },
   openGraph: {
-    title: 'Baman Prasad Guragain (MrTrotid) | Cybersecurity & Creative Development Portfolio',
+    title: 'Baman Prasad Guragain (MrTrotid) | Cybersecurity Enthusiast',
     description:
-      'Portfolio of Baman Prasad Guragain (MrTrotid), showcasing cybersecurity-focused projects, certifications, and creative development work.',
+      'Hey there this is my portfolio where you will find most of the things about me.',
     type: "website",
     siteName: 'Baman Prasad Guragain Portfolio',
     locale: 'en_US',
@@ -94,8 +94,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: 'Baman Prasad Guragain (MrTrotid) | Portfolio',
-    description: 'Official portfolio of Baman Prasad Guragain (MrTrotid), cybersecurity enthusiast and creative developer.',
+    title: 'Baman Prasad Guragain (MrTrotid) | Cybersecurity Enthusiast',
+    description: 'Hey there this is my portfolio where you will find most of the things about me.',
     images: ["/og-image.png"],
   },
   icons: {

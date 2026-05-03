@@ -95,5 +95,5 @@ export const middleware = (request: NextRequest) => {
 };
 
 export const config = {
-  matcher: ['/(.*)', '/api/(.*)'],
+  matcher: ['/((?!_next/static|_next/image|favicon.ico|og-image.png|robots.txt|sitemap.xml).*)', '/api/(.*)'],
 };
