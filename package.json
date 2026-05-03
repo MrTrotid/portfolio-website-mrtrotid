@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.42",
+    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "framer-motion": "^11.2.11",
     "gsap": "^3.12.5",
@@ -26,8 +27,8 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.47.2",
-    "@testing-library/react": "^16.0.1",
     "@testing-library/jest-dom": "^6.6.2",
+    "@testing-library/react": "^16.0.1",
     "@types/node": "^20.16.5",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",

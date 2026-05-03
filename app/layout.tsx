@@ -14,6 +14,8 @@ import { SmoothScroll } from "@/components/cinematic/smooth-scroll";
 import { StructuredData } from '@/components/cinematic/structured-data';
 // Imports site URL constant
 import { siteUrl } from "@/lib/site";
+// Imports Vercel Analytics component
+import { Analytics } from '@vercel/analytics/next';
 
 // Configures Manrope font with latin subset and CSS variable
 const manrope = Manrope({
@@ -131,6 +133,8 @@ const RootLayout = ({ children }: RootLayoutProps) => {
         <CustomCursor />
         {/* Page content */}
         {children}
+        {/* Vercel Analytics */}
+        <Analytics />
       </body>
     </html>
   );
