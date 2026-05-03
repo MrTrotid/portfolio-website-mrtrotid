@@ -63,12 +63,12 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
         variants={staggerContainer(0.1)}
         className="mx-auto max-w-6xl"
       >
-        {/* Header with title */}
-        <motion.div variants={cinematicReveal} className="flex flex-row items-center justify-between gap-4 w-full" data-title-track>
-          {/* Terminal command */}
-          <p className="terminal-prompt text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
-            <span className="text-[#8b949e]">$</span> <HackerType text="ls -la my_projects/" />
-          </p>
+          {/* Header with title */}
+          <motion.div variants={cinematicReveal} className="flex flex-row items-center justify-between gap-4 w-full" data-title-track>
+            {/* Terminal command */}
+            <p className="text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
+              <span className="text-[#8b949e]">$</span> <HackerType text="ls -la my_projects/" />
+            </p>
           {/* View all button with magnetic effect */}
           <Magnetic strength={8} className="shrink-0">
             <a
@@ -98,8 +98,8 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             </button>
           </Magnetic>
           {/* Project counter */}
-          <p className="terminal-prompt text-xs">
-            <span className="text-[#8b949e]">$</span>{' '}
+          <p className="text-xs">
+            <span className="text-[#8b949e]">%</span>{' '}
             <HackerType text={`project ${currentIndex + 1} / ${projects.length}`} />
           </p>
           {/* Next button */}
@@ -168,7 +168,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
               {/* Project details */}
               <div className="mt-4 space-y-3 text-center">
                 <p className="content-heading text-xs tracking-[0.2em]">
-                  <span className="terminal-prompt mr-2">#</span>
+                  <span className="text-[#8b949e]">#</span>
                   {currentProject.year}
                 </p>
                 <h3 className="content-title section-title text-xl sm:text-2xl">{currentProject.name}</h3>

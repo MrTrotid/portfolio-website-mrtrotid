@@ -109,7 +109,7 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
         {/* Card container */}
         <div className="rounded-3xl border border-[#2f5d38]/65 bg-[#070d08]/92 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:p-6">
           {/* Terminal command */}
-          <motion.p variants={fadeInUp} className="terminal-prompt text-2xl sm:text-3xl">
+          <motion.p variants={fadeInUp} className="text-2xl sm:text-3xl">
             <span className="text-[#8b949e]">$</span>{' '}
             <HackerType text={'grep -R "leadership" ./organizations'} />
           </motion.p>
@@ -143,8 +143,8 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
                 {/* Period */}
                 <p className="mt-1 text-xs tracking-[0.16em] text-[#a3c6ac]">{item.period}</p>
                 {/* Hint text */}
-                <p className="terminal-prompt mt-4 text-xs">
-                  <span className="text-[#8b949e]">$</span> open details
+                <p className="text-xs">
+                  <span className="text-[#8b949e]">%</span> open details
                 </p>
               </motion.button>
             ))}
@@ -210,8 +210,8 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
 
                 {/* Achievements */}
                 <div className="mt-6">
-                  <p className="terminal-prompt text-sm">
-                    <span className="text-[#8b949e]">$</span> achievements
+                  <p className="text-sm">
+                    <span className="text-[#8b949e]">%</span> achievements
                   </p>
                   <ul className="mt-3 space-y-2">
                     {active.achievements.map((achievement) => (

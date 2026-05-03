@@ -199,12 +199,12 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                   >
                     <div className="overflow-hidden rounded-2xl border border-[#3ea657]/45 bg-[#07130b]/86 shadow-[0_0_0_1px_rgba(57,255,20,0.08),0_0_28px_rgba(57,255,20,0.12)] transition-shadow hover:shadow-[0_0_0_1px_rgba(57,255,20,0.22),0_0_42px_rgba(57,255,20,0.22)]">
                       <div className="flex items-center border-b border-[#2a6038]/50 px-3 py-2">
-                        <p className="terminal-prompt text-[11px] tracking-[0.2em]">
+                        <p className="text-[11px] tracking-[0.2em]">
                           {item.label}
                         </p>
                       </div>
                       <div className="px-3 py-3">
-                        <p className="terminal-prompt !text-[#9be6a8] text-xs">
+                        <p className="!text-[#9be6a8] text-xs">
                           {item.command}
                         </p>
                         <p className="section-title mt-1 !text-[#e7ffe9] text-[17px] leading-tight">

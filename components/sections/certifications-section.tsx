@@ -29,7 +29,7 @@ export const CertificationsSection = ({ items, certificationsUrl }: Certificatio
         className="mx-auto max-w-6xl"
       >
         <motion.div variants={cinematicReveal} className="flex flex-row items-center justify-between gap-4 w-full" data-title-track>
-          <p className="terminal-prompt text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
+          <p className="text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
             <span className="text-[#8b949e]">$</span> <HackerType text="ls -la certifications/" />
           </p>
           {certificationsUrl && (
@@ -77,7 +77,7 @@ export const CertificationsSection = ({ items, certificationsUrl }: Certificatio
               >
                 <div>
                   <p className="content-heading text-[10px] tracking-[0.2em] mb-3">
-                    <span className="terminal-prompt mr-2">#</span>{cert.category}
+                    <span className="text-[#8b949e]">#</span>{cert.category}
                   </p>
                   <h3 className="content-title section-title text-lg leading-snug">{cert.name}</h3>
                   <p className="mt-2 text-xs font-medium text-[#a3c6ac] tracking-wide">
