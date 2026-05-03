@@ -1,0 +1,43 @@
+# Baman Prasad Guragain (MrTrotid) - Portfolio
+
+## About
+Baman Prasad Guragain (MrTrotid) is a cybersecurity enthusiast and creative developer from Nepal. He is an A-Level graduate with Mathematics A and Computer Science A grades, currently building modern web applications and exploring security.
+
+## Site Structure
+- / (Home): Main portfolio with hero, about, skills, projects, experience, certifications, leadership, achievements, and contact sections
+- /#about: About section with introduction and what I do
+- /#projects: Projects section with AQ Sentinel, MeroAushadhi, and A-Level Past Paper Extractor
+- /#experience: Work experience at Gadgetbyte Nepal as SEO Content Writer
+- /#certifications: Interactive certifications grid (Cisco, AWS, Programiz, Cambridge)
+- /#contact: Contact section with links to resume, projects, certifications, and social profiles
+
+## Projects
+1. AQ Sentinel - IoT air quality monitoring with ESP32 and React/Node.js
+2. MeroAushadhi - Medicine information app with Google Generative AI and Supabase
+3. A-Level Past Paper Extractor - Python desktop app using tkinter for downloading Cambridge past papers
+
+## Certifications
+- Networking Basics (Cisco, Mar 2026)
+- Introduction to Cybersecurity (Cisco, Aug 2025)
+- Complexity Calculation (Programiz, Aug 2024)
+- 3rd Place - Cambridge Code League (Cambridge, Feb 2025)
+- Introduction to Cybersecurity and Cloud Computing (Educational Institution, Aug 2025)
+
+## Tech Stack
+Next.js 14, TypeScript 5, Tailwind CSS 3, Framer Motion 11, Playwright, Vitest, GitHub Actions
+
+## Social Links
+- GitHub: https://github.com/mrtrotid
+- LinkedIn: https://linkedin.com/in/mrtrotid
+- YouTube: https://youtube.com/@mrtrotid
+- Instagram: https://instagram.com/mrtrotid
+- Email: contact@bamanguragain.com.np
+- Resume: https://resume.bamanguragain.com.np
+- Projects: https://projects.bamanguragain.com.np
+- Certifications: https://certifications.bamanguragain.com.np
+
+## Contact
+For inquiries, reach out via email at contact@bamanguragain.com.np or connect on LinkedIn.
+
+## Live Site
+https://www.bamanguragain.com.np
