@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     template: '%s | Baman Prasad Guragain (MrTrotid)',
   },
   description:
-    'Hey there! This is my portfolio where you will find most of the things about me - a cybersecurity enthusiast and creative developer from Nepal.',
+    'Portfolio of Baman Prasad Guragain (MrTrotid) - Cybersecurity Enthusiast from Nepal exploring network security, coding, and open source development.',
   category: 'technology',
   applicationName: "Baman Prasad Guragain Portfolio",
   keywords: [
@@ -48,6 +48,9 @@ export const metadata: Metadata = {
     'Baman Guragain',
     'Baman Prasad',
     "Cybersecurity",
+    "Security",
+    "Code",
+    "Networking",
     'Cybersecurity Enthusiast Nepal',
     "Creative Developer",
     'SEO Content Writer Gadgetbyte Nepal',

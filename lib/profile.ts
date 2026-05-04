@@ -267,6 +267,7 @@ export const profile = {
     email: "mailto:contact@bamanguragain.com.np",
     github: "https://github.com/mrtrotid",
     linkedin: "https://linkedin.com/in/mrtrotid",
+    x: "https://x.com/mrtrotid",
     youtube: "https://youtube.com/@mrtrotid",
     instagram: "https://instagram.com/mrtrotid",
   },

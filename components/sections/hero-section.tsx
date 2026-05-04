@@ -18,6 +18,7 @@ type HeroSectionProps = {
   links: {
     github: string;
     linkedin: string;
+    x: string;
     youtube: string;
     instagram: string;
     resume: string;
@@ -178,6 +179,19 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
                 >
                   <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden>
                     <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM0 8h5v15H0V8zm7.5 0h4.79v2.05h.07c.67-1.27 2.3-2.6 4.74-2.6 5.06 0 6 3.33 6 7.66V23h-5v-6.9c0-1.64-.03-3.75-2.29-3.75-2.29 0-2.64 1.79-2.64 3.63V23h-5V8z" />
+                  </svg>
+                </a>
+              </Magnetic>
+              <Magnetic strength={7}>
+                <a
+                  href={links.x}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center text-white transition-colors hover:text-[#e7ffe9]"
+                  aria-label="X"
+                >
+                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden>
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
               </Magnetic>

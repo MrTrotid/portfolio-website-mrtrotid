@@ -21,6 +21,7 @@ type ContactSectionProps = {
     email: string;
     github: string;
     linkedin: string;
+    x: string;
     youtube: string;
     instagram: string;
   };
@@ -121,11 +122,7 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
       >
         {/* Terminal window container */}
         <div
-          className="relative overflow-hidden border border-[#2e8246]/45 bg-[#030704] px-5 pb-8 pt-8 sm:px-8 lg:pb-0 lg:px-12"
-          style={{
-            clipPath:
-              "polygon(3% 0%,97% 0%,100% 10%,100% 90%,97% 100%,3% 100%,0% 90%,0% 10%)",
-          }}
+          className="relative overflow-hidden border border-[#2e8246]/45 bg-[#030704] px-5 pb-8 pt-8 sm:px-8 lg:pb-0 lg:px-12 [clip-path:polygon(3%_0%,97%_0%,100%_10%,100%_90%,97%_100%,3%_100%,0%_90%,0%_10%)]"
         >
           {/* Radial gradient overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(57,255,20,0.12),transparent_58%)]" />
