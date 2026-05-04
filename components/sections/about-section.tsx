@@ -25,9 +25,9 @@ export const AboutSection = ({ intro }: AboutSectionProps) => {
       className="w-full"
     >
       {/* Terminal command with typewriter */}
-      <motion.p variants={fadeInUp} className="terminal-prompt text-2xl sm:text-3xl">
+      <motion.h2 variants={fadeInUp} className="terminal-prompt text-2xl sm:text-3xl">
         <span className="text-[#8b949e]">$</span> <HackerType text="whoami" />
-      </motion.p>
+      </motion.h2>
       {/* Intro text with parallax effect */}
       <motion.p
         variants={fadeInUp}

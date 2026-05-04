@@ -29,9 +29,9 @@ export const CertificationsSection = ({ items, certificationsUrl }: Certificatio
         className="mx-auto max-w-6xl"
       >
         <motion.div variants={cinematicReveal} className="flex flex-row items-center justify-between gap-4 w-full" data-title-track>
-          <p className="text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
+          <h2 className="text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
             <span className="text-[#8b949e]">$</span> <HackerType text="ls -la certifications/" />
-          </p>
+          </h2>
           {certificationsUrl && (
             <Magnetic strength={8} className="shrink-0">
               <a

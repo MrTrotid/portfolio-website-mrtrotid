@@ -25,9 +25,9 @@ export const WhatIDoSection = ({ items }: WhatIDoSectionProps) => {
       className="mt-3 w-full md:mt-0"
     >
       {/* Terminal command with typewriter */}
-      <motion.p variants={fadeInUp} className="terminal-prompt text-2xl sm:text-3xl">
+      <motion.h2 variants={fadeInUp} className="terminal-prompt text-2xl sm:text-3xl">
         <span className="text-[#8b949e]">$</span> <HackerType text="cat what_i_do.txt" />
-      </motion.p>
+      </motion.h2>
       {/* List of activities */}
       <motion.ul variants={staggerContainer(0.08)} className="mt-8 grid gap-3 sm:gap-4">
         {items.map((item) => (

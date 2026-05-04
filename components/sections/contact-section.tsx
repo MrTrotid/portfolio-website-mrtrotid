@@ -149,13 +149,13 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
           </div>
 
           {/* Section title */}
-          <motion.p
+          <motion.h2
             variants={fadeInUp}
             className="terminal-prompt relative z-10 text-center text-2xl sm:text-3xl"
           >
             <span className="text-[#8b949e]">$</span>{" "}
             <HackerType text="ls -la modules/" />
-          </motion.p>
+          </motion.h2>
 
           {/* Desktop layout with orbit links and portrait */}
           <div className="relative z-10 mt-6 hidden lg:block">

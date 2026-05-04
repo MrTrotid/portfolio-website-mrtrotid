@@ -31,9 +31,9 @@ export const ExperienceSection = ({ items }: ExperienceSectionProps) => {
         className="mx-auto max-w-6xl"
       >
         {/* Terminal command with typewriter */}
-        <motion.p variants={fadeInUp} className="text-2xl sm:text-3xl">
+        <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl">
           <span className="text-[#8b949e]">$</span> <HackerType text="cat experience.log" />
-        </motion.p>
+        </motion.h2>
         {/* Timeline container with vertical line */}
         <div className="mt-8 space-y-4 border-l border-[#4bb964]/35 pl-5">
           {items.map((item) => (

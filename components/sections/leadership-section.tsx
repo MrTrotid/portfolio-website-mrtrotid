@@ -109,10 +109,10 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
         {/* Card container */}
         <div className="rounded-3xl border border-[#2f5d38]/65 bg-[#070d08]/92 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:p-6">
           {/* Terminal command */}
-          <motion.p variants={fadeInUp} className="text-2xl sm:text-3xl">
+          <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl">
             <span className="text-[#8b949e]">$</span>{' '}
             <HackerType text={'grep -R "leadership" ./organizations'} />
-          </motion.p>
+          </motion.h2>
 
           {/* Grid of organization cards */}
           <motion.div variants={staggerContainer(0.06)} className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

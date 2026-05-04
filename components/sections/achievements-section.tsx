@@ -29,9 +29,9 @@ export const AchievementsSection = ({ items }: AchievementsSectionProps) => {
         className="mx-auto max-w-6xl"
       >
         {/* Terminal command with typewriter */}
-        <motion.p variants={fadeInUp} className="text-2xl sm:text-3xl">
+        <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl">
           <span className="text-[#8b949e]">$</span> <HackerType text="cat achievements.md" />
-        </motion.p>
+        </motion.h2>
         {/* Grid of achievement cards */}
         <motion.div
           variants={staggerContainer(0.08)}

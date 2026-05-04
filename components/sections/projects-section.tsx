@@ -66,9 +66,9 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
           {/* Header with title */}
           <motion.div variants={cinematicReveal} className="flex flex-row items-center justify-between gap-4 w-full" data-title-track>
             {/* Terminal command */}
-            <p className="text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
+            <h2 className="text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
               <span className="text-[#8b949e]">$</span> <HackerType text="ls -la my_projects/" />
-            </p>
+            </h2>
           {/* View all button with magnetic effect */}
           <Magnetic strength={8} className="shrink-0">
             <a

@@ -52,9 +52,9 @@ export const SkillsSection = ({ skills }: SkillsSectionProps) => {
         className="mx-auto max-w-6xl"
       >
         {/* Terminal command */}
-        <motion.p variants={fadeInUp} className="text-2xl sm:text-3xl">
+        <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl">
           <span className="text-[#8b949e]">$</span> <HackerType text="ls -la skills/" />
-        </motion.p>
+        </motion.h2>
         {/* Skills grid */}
         <motion.div variants={staggerContainer(0.1)} className="mt-8 grid gap-4 md:grid-cols-3">
           <SkillGroup label="Frontend" values={skills.frontend} />

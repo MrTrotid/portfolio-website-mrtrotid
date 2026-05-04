@@ -65,16 +65,16 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
               priority
               className="h-16 w-16 object-contain sm:h-20 sm:w-20"
             />
-            <p className="terminal-green section-title text-2xl font-semibold tracking-[0.28em] sm:text-5xl">
+            <h2 className="terminal-green section-title text-2xl font-semibold tracking-[0.28em] sm:text-5xl">
               {alias}
-            </p>
+            </h2>
           </div>
 
           <div className="pt-2 pr-1 text-right">
-            <p className="terminal-green section-title text-2xl font-semibold leading-[1.28] sm:text-5xl">
+            <h1 className="terminal-green section-title text-2xl font-semibold leading-[1.28] sm:text-5xl">
               <span className="block">{firstLine}</span>
               <span className="block">{secondLine}</span>
-            </p>
+            </h1>
           </div>
         </motion.div>
 
