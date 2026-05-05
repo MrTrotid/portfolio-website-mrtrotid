@@ -28,7 +28,7 @@ export const CertificationsSection = ({ items, certificationsUrl }: Certificatio
         variants={staggerContainer(0.1)}
         className="mx-auto max-w-6xl"
       >
-        <motion.div variants={cinematicReveal} className="flex flex-row items-center justify-between gap-4 w-full" data-title-track>
+        <motion.div variants={cinematicReveal} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-4 w-full">
           <h2 className="text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
             <span className="text-[#8b949e]">$</span> <HackerType text="ls -la certifications/" />
           </h2>

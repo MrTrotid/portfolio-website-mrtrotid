@@ -64,7 +64,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
         className="mx-auto max-w-6xl"
       >
           {/* Header with title */}
-          <motion.div variants={cinematicReveal} className="flex flex-row items-center justify-between gap-4 w-full" data-title-track>
+          <motion.div variants={cinematicReveal} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-4 w-full">
             {/* Terminal command */}
             <h2 className="text-lg sm:text-2xl md:text-3xl whitespace-nowrap">
               <span className="text-[#8b949e]">$</span> <HackerType text="ls -la my_projects/" />

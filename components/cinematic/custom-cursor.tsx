@@ -79,6 +79,7 @@ export const CustomCursor = () => {
     const update = () => {
       setEnabled(query.matches);
       document.body.classList.toggle("themed-cursor", query.matches);
+      document.documentElement.classList.toggle("themed-cursor", query.matches);
     };
     update();
     query.addEventListener("change", update);
@@ -161,8 +162,9 @@ export const CustomCursor = () => {
       window.removeEventListener("mousemove", move);
       window.removeEventListener("scroll", updateScrollHint);
       window.removeEventListener("resize", updateScrollHint);
-      document.removeEventListener("mouseleave", leave);
+      document.removeEventListener("mouseout", leave);
       document.body.classList.remove("themed-cursor");
+      document.documentElement.classList.remove("themed-cursor");
     };
   }, [x, y]);
 
@@ -176,7 +178,7 @@ export const CustomCursor = () => {
       {/* Cursor dot with glow */}
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed z-[80] hidden -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#39ff14]/70 bg-[#8fff7a] md:block"
+        className="pointer-events-none fixed left-0 top-0 z-[80] hidden -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#39ff14]/70 bg-[#8fff7a] md:block"
         animate={{
           width: interactive ? 13 : 11,
           height: interactive ? 13 : 11,
@@ -192,14 +194,17 @@ export const CustomCursor = () => {
       {/* Cursor label */}
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed z-[81] hidden md:block"
-        animate={{ opacity: label ? 1 : 0, y: label ? 0 : -2 }}
-        transition={{ duration: 0.12, ease: "easeOut" }}
+        className="pointer-events-none fixed left-0 top-0 z-[81] hidden md:block"
         style={{ x: smoothX, y: smoothY }}
       >
-        <span className="ml-5 mt-4 inline-block whitespace-nowrap align-sub text-[14px] uppercase tracking-[0.08em] text-[#dfffe3] [font-family:var(--font-ndot57)]">
-          {label}
-        </span>
+        <motion.div
+          animate={{ opacity: label ? 1 : 0, y: label ? 0 : -2 }}
+          transition={{ duration: 0.12, ease: "easeOut" }}
+        >
+          <span className="ml-5 mt-4 inline-block whitespace-nowrap align-sub text-[14px] uppercase tracking-[0.08em] text-[#dfffe3] [font-family:var(--font-ndot57)]">
+            {label}
+          </span>
+        </motion.div>
       </motion.div>
     </>
   );

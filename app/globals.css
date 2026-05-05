@@ -69,14 +69,10 @@ a {
 }
 
 /* Custom cursor styles for themed cursor on interactive elements */
+html.themed-cursor,
+html.themed-cursor *,
 body.themed-cursor,
-body.themed-cursor a,
-body.themed-cursor button,
-body.themed-cursor [role="button"],
-body.themed-cursor input,
-body.themed-cursor textarea,
-body.themed-cursor select,
-body.themed-cursor label {
+body.themed-cursor * {
     cursor: none !important;
 }
 
