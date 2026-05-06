@@ -50,7 +50,7 @@ export const ExperienceSection = ({ items }: ExperienceSectionProps) => {
               {/* Organization and logo */}
               <div className="mt-2 flex items-center gap-3">
                 {item.logo ? (
-                  <Image src={item.logo} alt={item.org} width={34} height={34} className="rounded-md bg-white/80 object-contain p-1" />
+                   <Image src={item.logo} alt={`${item.org} logo`} width={34} height={34} className="rounded-md bg-white/80 object-contain p-1" />
                 ) : null}
                 <h3 className="content-title section-title text-xl">{item.org}</h3>
               </div>

@@ -5,36 +5,50 @@ import { siteUrl } from '@/lib/site';
 
 // Structured data component for SEO - injects JSON-LD into page
 export const StructuredData = () => {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: profile.name,
-    alternateName: profile.alias,
-    url: siteUrl,
-    jobTitle: profile.role,
-    description: profile.intro,
-    image: `${siteUrl}/contact-portrait.png`,
-    sameAs: [
-      profile.links.github,
-      profile.links.linkedin,
-      profile.links.youtube,
-      profile.links.instagram,
-      profile.links.projects,
-      profile.links.certifications,
-    ],
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Gadgetbyte Nepal',
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: profile.name,
+      alternateName: profile.alias,
+      url: siteUrl,
+      jobTitle: profile.role,
+      description: profile.intro,
+      image: `${siteUrl}/contact-portrait.png`,
+      sameAs: [
+        profile.links.github,
+        profile.links.linkedin,
+        profile.links.youtube,
+        profile.links.instagram,
+        profile.links.projects,
+        profile.links.certifications,
+      ],
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Gadgetbyte Nepal',
+      },
+      knowsAbout: [
+        'Cybersecurity',
+        'Web Application Security',
+        'Next.js',
+        'TypeScript',
+        'Creative Development',
+        'SEO Content Writing',
+      ],
     },
-    knowsAbout: [
-      'Cybersecurity',
-      'Web Application Security',
-      'Next.js',
-      'TypeScript',
-      'Creative Development',
-      'SEO Content Writing',
-    ],
-  };
+    {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: profile.name,
+      alternateName: profile.alias,
+      url: siteUrl,
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: `${siteUrl}/?s={search_term_string}`,
+        'query-input': 'required name=search_term_string'
+      }
+    }
+  ];
 
   return (
     // Injects JSON-LD script for search engines

@@ -164,14 +164,14 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
               >
                 <div className="relative w-[505px] h-[505px]">
                   <div className="absolute inset-0 border border-[#42b75b]/45 bg-transparent rounded-[58%_42%_63%_37%/41%_55%_45%_59%]" />
-                  <Image
-                    src="/contact-portrait.png"
-                    alt="Baman Prasad Guragain portrait"
-                    width={860}
-                    height={980}
-                    className="absolute -bottom-1 left-1/2 h-auto w-full max-w-[560px] -translate-x-1/2 object-contain"
-                    loading="lazy"
-                  />
+                   <Image
+                     src="/contact-portrait.png"
+                     alt="Portrait of Baman Prasad Guragain (MrTrotid), Cybersecurity Enthusiast"
+                     width={860}
+                     height={980}
+                     className="absolute -bottom-1 left-1/2 h-auto w-full max-w-[560px] -translate-x-1/2 object-contain"
+                     loading="lazy"
+                   />
                 </div>
               </motion.div>
 
@@ -181,19 +181,20 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                 const external = href?.startsWith("http");
 
                 return (
-                  <motion.a
-                    key={item.id}
-                    variants={fadeInUp}
-                    href={href}
-                    onClick={(event) =>
-                      executeCommand(event, href, item.executeText)
-                    }
-                    data-cursor="details"
-                    data-cursor-label="Execute Module"
-                    className={`absolute z-30 w-full max-w-[360px] ${item.className}`}
-                    whileHover={{ y: -5, scale: 1.01 }}
-                    whileTap={{ scale: 0.99 }}
-                  >
+                 <motion.a
+                   key={item.id}
+                   variants={fadeInUp}
+                   href={href}
+                   onClick={(event) =>
+                     executeCommand(event, href, item.executeText)
+                   }
+                   data-cursor="details"
+                   data-cursor-label="Execute Module"
+                   rel="noopener noreferrer nofollow"
+                   className={`absolute z-30 w-full max-w-[360px] ${item.className}`}
+                   whileHover={{ y: -5, scale: 1.01 }}
+                   whileTap={{ scale: 0.99 }}
+                 >
                     <div className="overflow-hidden rounded-2xl border border-[#3ea657]/45 bg-[#07130b]/86 shadow-[0_0_0_1px_rgba(57,255,20,0.08),0_0_28px_rgba(57,255,20,0.12)] transition-shadow hover:shadow-[0_0_0_1px_rgba(57,255,20,0.22),0_0_42px_rgba(57,255,20,0.22)]">
                       <div className="flex items-center border-b border-[#2a6038]/50 px-3 py-2">
                         <p className="text-[11px] tracking-[0.2em]">

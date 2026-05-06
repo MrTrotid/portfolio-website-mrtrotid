@@ -74,7 +74,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             <a
               href={projectsUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer nofollow"
               data-cursor="project"
               className="external-indicator inline-flex items-center justify-center rounded-full border border-[#4bb964]/35 bg-[#0c1b10]/70 px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs tracking-widest text-[#d5ffe0] transition-colors hover:bg-[#14321b] whitespace-nowrap"
             >
@@ -127,7 +127,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             className="glass pointer-events-none hidden overflow-hidden rounded-2xl p-2 md:block md:p-3"
           >
             <div className="relative h-28 overflow-hidden rounded-xl bg-[#0a1a10] md:h-44">
-              <Image src={previous.image} alt={previous.name} fill sizes="22vw" className="object-contain opacity-80 p-1" loading="lazy" />
+              <Image src={previous.image} alt={`Screenshot of ${previous.name} project`} fill sizes="22vw" className="object-contain opacity-80 p-1" loading="lazy" />
             </div>
             <p className="content-muted mt-2 truncate text-[10px] tracking-[0.14em] md:text-xs">{previous.name}</p>
           </motion.article>
@@ -156,14 +156,14 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             >
               {/* Project image */}
               <div className="relative h-56 overflow-hidden rounded-2xl border border-white/15 bg-[#0a1a10] sm:h-64 md:h-72">
-                <Image
-                  src={currentProject.image}
-                  alt={currentProject.name}
-                  fill
-                  sizes="(max-width: 768px) 92vw, 850px"
-                  className="object-contain p-2"
-                  loading="lazy"
-                />
+               <Image
+                   src={currentProject.image}
+                   alt="Screenshot of ${currentProject.name} project"
+                   fill
+                   sizes="(max-width: 768px) 92vw, 850px"
+                   className="object-contain p-2"
+                   loading="lazy"
+                 />
               </div>
               {/* Project details */}
               <div className="mt-4 space-y-3 text-center">
@@ -218,7 +218,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             className="glass pointer-events-none hidden overflow-hidden rounded-2xl p-2 md:block md:p-3"
           >
             <div className="relative h-28 overflow-hidden rounded-xl bg-[#0a1a10] md:h-44">
-              <Image src={next.image} alt={next.name} fill sizes="22vw" className="object-contain opacity-80 p-1" loading="lazy" />
+               <Image src={next.image} alt="Screenshot of ${next.name} project" fill sizes="22vw" className="object-contain opacity-80 p-1" loading="lazy" />
             </div>
             <p className="content-muted mt-2 truncate text-[10px] tracking-[0.14em] md:text-xs">{next.name}</p>
           </motion.article>

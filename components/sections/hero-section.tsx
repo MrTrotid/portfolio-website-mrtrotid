@@ -58,14 +58,14 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
       >
         <motion.div variants={fadeInUp} className="z-10 flex items-start justify-between gap-6">
           <div className="flex items-center gap-4 pt-2 sm:gap-5 sm:pt-0">
-            <Image
-              src="/logo.png"
-              alt="MrTrotid logo"
-              width={80}
-              height={80}
-              priority
-              className="h-16 w-16 object-contain sm:h-20 sm:w-20"
-            />
+             <Image
+               src="/logo.png"
+               alt="MrTrotid logo - Cybersecurity Enthusiast Portfolio"
+               width={80}
+               height={80}
+               priority
+               className="h-16 w-16 object-contain sm:h-20 sm:w-20"
+             />
             <h2 className="terminal-green section-title text-2xl font-semibold tracking-[0.28em] sm:text-5xl">
               {alias}
             </h2>
@@ -160,7 +160,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
                 <a
                   href={links.github}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="inline-flex min-h-11 min-w-11 items-center justify-center text-white transition-colors hover:text-[#39ff14]"
                   aria-label="GitHub"
                 >
@@ -173,7 +173,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
                 <a
                   href={links.linkedin}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="inline-flex min-h-11 min-w-11 items-center justify-center text-[#0a66c2] transition-colors hover:text-[#61a8ea]"
                   aria-label="LinkedIn"
                 >
@@ -186,7 +186,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
                 <a
                   href={links.x}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="inline-flex min-h-11 min-w-11 items-center justify-center text-white transition-colors hover:text-[#e7ffe9]"
                   aria-label="X"
                 >
@@ -199,7 +199,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
                 <a
                   href={links.youtube}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="inline-flex min-h-11 min-w-11 items-center justify-center text-[#ff0033] transition-colors hover:text-[#ff6e8c]"
                   aria-label="YouTube"
                 >
@@ -212,7 +212,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
                 <a
                   href={links.instagram}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="inline-flex min-h-11 min-w-11 items-center justify-center text-[#f58529] transition-colors hover:text-[#ffb37d]"
                   aria-label="Instagram"
                 >

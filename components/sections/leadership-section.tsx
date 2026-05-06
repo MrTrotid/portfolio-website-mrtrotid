@@ -127,14 +127,14 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
                 {/* Logo and name */}
                 <div className="flex items-center gap-3">
                   {item.logo ? (
-                    <Image
-                      src={item.logo}
-                      alt={item.name}
-                      width={34}
-                      height={34}
-                      className="h-9 w-9 rounded-md bg-white/85 object-contain p-1"
-                      loading="lazy"
-                    />
+                       <Image
+                         src={item.logo}
+                         alt={`${item.name} logo`}
+                         width={34}
+                         height={34}
+                         className="h-9 w-9 rounded-md bg-white/85 object-contain p-1"
+                         loading="lazy"
+                       />
                   ) : null}
                   <h3 className="section-title text-lg text-[#f1fff3]">{item.name}</h3>
                 </div>

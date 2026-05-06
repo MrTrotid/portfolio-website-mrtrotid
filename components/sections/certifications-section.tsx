@@ -37,7 +37,7 @@ export const CertificationsSection = ({ items, certificationsUrl }: Certificatio
               <a
                 href={certificationsUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer nofollow"
                 data-cursor="details"
                 className="external-indicator inline-flex items-center justify-center rounded-full border border-[#4bb964]/35 bg-[#0c1b10]/70 px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs tracking-widest text-[#d5ffe0] transition-colors hover:bg-[#14321b] whitespace-nowrap"
               >
