@@ -6,7 +6,7 @@ import Image from 'next/image';
 // Imports Framer Motion for animations
 import { AnimatePresence, motion } from 'framer-motion';
 // Imports React hooks
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 // Imports HackerType typewriter component
 import { HackerType } from '@/components/cinematic/hacker-type';
 // Imports Leadership type from profile
@@ -17,40 +17,6 @@ import { fadeInUp, staggerContainer } from '@/lib/motion/variants';
 // Type for leadership section props
 type LeadershipSectionProps = {
   items: Leadership[];
-};
-
-// Matrix-style backdrop component with falling code effect
-const MatrixBackdrop = () => {
-  // Creates array for column count
-  const columns = useMemo(() => new Array(14).fill(0), []);
-
-  return (
-    // Overflow-hidden container for matrix effect
-    <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl">
-      {/* Dark overlay background */}
-      <div className="absolute inset-0 bg-[#050b06]/95" />
-      {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(57,255,20,0.14),rgba(5,11,6,0.92)_56%)]" />
-      {/* Animated falling columns */}
-      <div className="absolute inset-0">
-        {columns.map((_, index) => (
-          <motion.div
-            key={index}
-            className="absolute top-0 h-full w-px bg-[linear-gradient(to_bottom,rgba(57,255,20,0.03),rgba(57,255,20,0.45),rgba(57,255,20,0.02))]"
-            style={{ left: `${(index / columns.length) * 100}%` }}
-            initial={{ y: '-100%' }}
-            animate={{ y: ['-100%', '100%'] }}
-            transition={{
-              duration: 2.1 + (index % 4) * 0.35,
-              repeat: Number.POSITIVE_INFINITY,
-              ease: 'linear',
-              delay: (index % 6) * 0.16,
-            }}
-          />
-        ))}
-      </div>
-    </div>
-  );
 };
 
 // Leadership section component - displays leadership roles with modal popup
@@ -106,8 +72,8 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
         variants={staggerContainer(0.08)}
         className="mx-auto max-w-6xl"
       >
-        {/* Card container */}
-        <div className="rounded-3xl border border-[#2f5d38]/65 bg-[#070d08]/92 p-5 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:p-6">
+         {/* Card container */}
+        <div className="rounded-3xl border border-[#2f5d38]/65 glass p-5 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:p-6">
           {/* Terminal command */}
           <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl">
             <span className="text-[#8b949e]">$</span>{' '}
@@ -178,9 +144,6 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
               transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="relative z-10 w-full max-w-3xl overflow-hidden rounded-2xl border border-[#39ff14]/35 bg-[#060d08] shadow-[0_28px_80px_rgba(0,0,0,0.72)]"
             >
-              {/* Matrix background */}
-              <MatrixBackdrop />
-
               {/* Content */}
               <div className="relative z-10 p-6 sm:p-8">
                 {/* Typing indicator */}
