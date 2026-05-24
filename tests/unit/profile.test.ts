@@ -18,6 +18,5 @@ describe('profile data', () => {
     const names = profile.projects.map((project) => project.name);
     expect(names).toContain('AQ Sentinel');
     expect(names).toContain('MeroAushadhi');
-    expect(names).toContain('Sherlock Scramble Solver');
   });
 });

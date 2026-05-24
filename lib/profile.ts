@@ -84,33 +84,33 @@ export const profile = {
         "**Action:** Built an IoT solution combining an ESP32 microcontroller with a custom React/Node.js web app to process sensor telemetry.",
         "**Result:** Delivered an affordable, real-time air quality visualization platform.",
       ],
-      href: "https://projects.bamanguragain.com.np",
+      href: "https://projects.bamanguragain.com.np/aq-sentinel",
       image: "/projects/aqsentinel.png",
       year: "2025",
       tags: ["Next.js", "Data Visualization", "IoT", "ESP32"],
     },
     {
       name: "MeroAushadhi",
-      slug: "mero-aushadhi",
+      slug: "meroaushadhi",
       summary: [
         "**Problem:** Medical information was largely inaccessible and difficult to understand for Nepali-speaking users.",
         "**Action:** Developed a comprehensive medicine information application integrating Google Generative AI, Flowise, and Supabase.",
         "**Result:** Made complex medical data accessible, understandable, and actionable in native Nepali.",
       ],
-      href: "https://projects.bamanguragain.com.np",
+      href: "https://projects.bamanguragain.com.np/meroaushadhi",
       image: "/projects/meroaushadhi.png",
       year: "2025",
       tags: ["React", "Google Generative AI", "Flowise", "Supabase"],
     },
     {
       name: "A-Level Past Paper Extractor",
-      slug: "a-level-past-paper-extractor",
+      slug: "question-paper-extractor",
       summary: [
         "**Problem:** Students had difficulty accessing and organizing Cambridge International A-Level past papers efficiently.",
         "**Action:** Built a Python desktop application using tkinter and customtkinter that automates downloading papers from BestExamHelp based on subject, year, and paper type.",
         "**Result:** Users can now easily select subjects, choose years (2021-2024), filter by paper type, and download papers organized in structured folders."
       ],
-      href: "https://projects.bamanguragain.com.np",
+      href: "https://projects.bamanguragain.com.np/question-paper-extractor",
       image: "/projects/alevelpastpaperextractor.png",
       year: "2024",
       tags: ["Python", "tkinter", "customtkinter", "requests", "Pillow"]
