@@ -25,32 +25,32 @@ export const HackerType = ({ text, className }: HackerTypeProps) => {
   const isInView = useInView(ref, { once: false, margin: '-10% 0px -10% 0px' });
   // State for current output text
   const [output, setOutput] = useState(text);
+  // State for reduced motion preference
+  const [reduceMotion, setReduceMotion] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false;
+    }
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  });
+
+  // Effect to keep reduced motion preference in sync with the media query
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const onChange = () => setReduceMotion(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   // Effect for typewriter animation
   useEffect(() => {
-    // Skip if not in view
-    if (!isInView) {
-      setOutput(text);
+    // Skip if not in view or reduced motion is preferred
+    if (!isInView || reduceMotion) {
       return;
     }
 
-    // Skip if reduced motion is preferred
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) {
-      setOutput(text);
-      return;
-    }
-
-    // Generate initial scrambled text
+    // Generate the next scrambled frame based on animation progress
     const startedAt = performance.now();
-    const firstPass = text
-      .split('')
-      .map((char) => (char === ' ' ? ' ' : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]))
-      .join('');
-    setOutput(firstPass);
-
-    // Animation timer updates text progressively
-    const timer = window.setInterval(() => {
+    const tick = () => {
       const elapsed = performance.now() - startedAt;
       const progress = Math.min(elapsed / ANIMATION_MS, 1);
       const reveal = Math.floor(progress * text.length);
@@ -74,15 +74,22 @@ export const HackerType = ({ text, className }: HackerTypeProps) => {
         setOutput(text);
         window.clearInterval(timer);
       }
-    }, TICK_MS);
+    };
 
-    return () => window.clearInterval(timer);
-  }, [isInView, text]);
+    // Start the scramble immediately on the next frame, then keep ticking
+    const raf = requestAnimationFrame(tick);
+    const timer = window.setInterval(tick, TICK_MS);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      window.clearInterval(timer);
+    };
+  }, [isInView, text, reduceMotion]);
 
   // Renders span with typewriter effect
   return (
     <span ref={ref} className={className} data-hacker-skip>
-      {output}
+      {!isInView || reduceMotion ? text : output}
     </span>
   );
 };

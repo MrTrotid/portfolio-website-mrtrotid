@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 /* Defines custom font face for NDot-57 retro font */
 @font-face {
@@ -203,6 +201,31 @@ body.themed-cursor * {
     margin-left: 0.35rem;
     font-size: 0.88em;
     color: var(--soft);
+}
+
+/* Vertical side navigation on the hero */
+.side-nav-vertical {
+    display: flex;
+    align-items: center;
+}
+
+/* Scale the side nav with the viewport height so it stays proportional
+   (and does not overlap the name or social icons) when the page is zoomed */
+.side-nav-vertical ul {
+    gap: min(3svh, 2.25rem);
+}
+
+.side-nav-vertical a {
+    font-size: min(1.45svh, 1rem);
+    padding-block: min(0.8svh, 0.75rem);
+    min-width: 2.75rem;
+}
+
+/* Hide the hero side nav on short viewports so zoomed layouts stay clear */
+@media (max-height: 560px) {
+    .side-nav-vertical {
+        display: none !important;
+    }
 }
 
 /* Reduces motion preference for accessibility */

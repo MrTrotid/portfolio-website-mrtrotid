@@ -103,9 +103,9 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
 
         <motion.aside
           variants={fadeInUp}
-          className="absolute bottom-0 right-2 top-0 hidden items-center lg:flex xl:right-4"
+          className="side-nav-vertical absolute bottom-0 right-2 top-0 hidden lg:flex xl:right-4"
         >
-          <ul className="flex flex-col items-center gap-12">
+          <ul className="flex max-h-full flex-col items-center justify-center">
             {sideLinks.map((item) => (
               <li key={item.href}>
                 <motion.a
@@ -115,7 +115,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
                   whileTap={{ scale: 0.98 }}
                   data-cursor="details"
                   data-cursor-label="Navigate to"
-                  className="inline-flex h-36 min-h-11 w-11 items-center justify-center text-[1.2rem] font-semibold leading-none tracking-[0.1em] text-white transition-colors hover:text-[#39ff14] [writing-mode:vertical-rl]"
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center font-semibold leading-none tracking-[0.14em] text-white transition-colors hover:text-[#39ff14] [writing-mode:vertical-rl]"
                 >
                   {item.label}
                 </motion.a>

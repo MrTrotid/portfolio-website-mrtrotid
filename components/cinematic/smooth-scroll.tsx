@@ -2,7 +2,7 @@
 'use client';
 
 // Imports Lenis smooth scroll library
-import Lenis from '@studio-freight/lenis';
+import Lenis from 'lenis';
 // Imports React useEffect hook
 import { useEffect } from 'react';
 

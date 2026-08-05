@@ -19,18 +19,44 @@ type LeadershipSectionProps = {
   items: Leadership[];
 };
 
+// Typewriter target line shown in the modal
+const TYPING_TARGET = '$ loading org_profile...';
+
+// Typing indicator that resets itself on mount
+const TypingLine = () => {
+  // State for typed text
+  const [typed, setTyped] = useState('');
+
+  // Effect for typewriter typing animation
+  useEffect(() => {
+    let index = 0;
+    const timer = window.setInterval(() => {
+      index += 1;
+      setTyped(TYPING_TARGET.slice(0, index));
+      if (index >= TYPING_TARGET.length) {
+        window.clearInterval(timer);
+      }
+    }, 35);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  return (
+    <p className="terminal-prompt text-sm">
+      {typed}
+      <span className="terminal-caret ml-1 inline-block h-4 w-[2px] bg-[#39ff14] align-middle" />
+    </p>
+  );
+};
+
 // Leadership section component - displays leadership roles with modal popup
 export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
   // State for active (selected) leadership item
   const [active, setActive] = useState<Leadership | null>(null);
-  // State for typing effect in modal
-  const [typed, setTyped] = useState('');
-  const typingTarget = '$ loading org_profile...';
 
   // Effect to close modal on Escape key
   useEffect(() => {
     if (!active) {
-      setTyped('');
       return;
     }
     const close = (event: KeyboardEvent) => {
@@ -40,25 +66,6 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
     };
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
-  }, [active]);
-
-  // Effect for typewriter typing animation
-  useEffect(() => {
-    if (!active) {
-      return;
-    }
-
-    setTyped('');
-    let index = 0;
-    const timer = window.setInterval(() => {
-      index += 1;
-      setTyped(typingTarget.slice(0, index));
-      if (index >= typingTarget.length) {
-        window.clearInterval(timer);
-      }
-    }, 35);
-
-    return () => window.clearInterval(timer);
   }, [active]);
 
   return (
@@ -147,10 +154,7 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
               {/* Content */}
               <div className="relative z-10 p-6 sm:p-8">
                 {/* Typing indicator */}
-                <p className="terminal-prompt text-sm">
-                  {typed}
-                  <span className="terminal-caret ml-1 inline-block h-4 w-[2px] bg-[#39ff14] align-middle" />
-                </p>
+                <TypingLine key={active.name} />
                 {/* Header */}
                 <div className="flex items-start justify-between gap-4">
                   <div>

@@ -10,10 +10,12 @@ A modern, high-performance portfolio website built with Next.js, emphasizing typ
 
 ## Tech Stack
 
-![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind-3-38B2AC?logo=tailwind-css)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-11-black?logo=framer)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-6-blue?logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?logo=tailwind-css)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-black?logo=framer)
+![ESLint](https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint)
 ![Playwright](https://img.shields.io/badge/Playwright-E2E-2EAD33?logo=playwright)
 ![Vitest](https://img.shields.io/badge/Vitest-Unit-6E9F18?logo=vitest)
 
@@ -22,7 +24,7 @@ A modern, high-performance portfolio website built with Next.js, emphasizing typ
 - **Interactive Project Carousel:** Showcases featured projects with a custom carousel interface. Project images use `object-contain` for proper fitting. Clicking opens the full project on the external projects site.
 - **Interactive Certifications Grid:** A dynamic, filterable grid component built with Framer Motion, displaying an array of professional IT and Cybersecurity certifications (e.g., Cisco, AWS, Programiz).
 - **Simplified Footer:** Clean footer with copyright, "Back to Top" navigation link, and terminal-style closing message.
-- **Strict Security Posture:** Enforced via Next.js Middleware (`middleware.ts`). Implements rigid Content Security Policy (CSP) headers optimized for static Next.js sites, HSTS max-age, and XSS protection.
+- **Strict Security Posture:** Enforced via Next.js Proxy (`proxy.ts`). Implements rigid Content Security Policy (CSP) headers optimized for static Next.js sites, HSTS max-age, and XSS protection.
 - **Optimized SEO Architecture:** 
   - Robust metadata generation with 150-160 char description targeting cybersecurity keywords
   - Semantic JSON-LD structured data
@@ -49,7 +51,7 @@ A modern, high-performance portfolio website built with Next.js, emphasizing typ
 │   ├── profile.ts         # Centralized data source for content (projects, certs)
 │   └── site.ts            # Site configuration variables (www.bamanguragain.com.np)
 ├── public/                # Static assets, fonts, logos, and images
-└── middleware.ts          # Centralized Next.js middleware for security headers
+└── proxy.ts               # Centralized Next.js proxy for security headers
 ```
 
 ## Featured Projects
@@ -59,6 +61,8 @@ A modern, high-performance portfolio website built with Next.js, emphasizing typ
 - **MeroAushadhi** - Medicine information app with Google Generative AI and Supabase
 
 ## Setup & Local Development
+
+> **Requirements:** Node.js 20.9+ (Node 22 LTS recommended).
 
 1. **Install Dependencies:**
    ```bash

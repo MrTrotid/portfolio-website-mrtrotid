@@ -136,7 +136,7 @@ export const profile = {
     {
       name: "Interact Club of Matribhumi Baluwatar",
       role: "Information Technology Officer",
-      period: "Jul 2025 - Present",
+      period: "Jul 2025 - Jul 2026",
       description:
         "Responsible for designing digital materials and contributing to the development and maintenance of the club's website to strengthen its online presence. Works closely with the executive team to implement technical solutions for events, registrations, and announcements, while supporting digital initiatives that enhance communication, streamline workflows, and improve overall member engagement.",
       achievements: [

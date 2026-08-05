@@ -50,7 +50,7 @@ const applySecurityHeaders = (response: NextResponse, nonce: string) => {
   response.headers.delete('Access-Control-Allow-Origin');
 };
 
-export const middleware = (request: NextRequest) => {
+export const proxy = (request: NextRequest) => {
   const nonce = generateNonce();
   const hostname = request.headers.get('host');
 
