@@ -53,8 +53,8 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
         animate="show"
         className="relative mx-auto grid min-h-[82svh] w-full max-w-[1400px] grid-rows-[auto_1fr_auto] md:min-h-[88svh]"
       >
-        <motion.div variants={fadeInUp} className="z-10 flex items-start justify-between gap-6">
-          <div className="flex items-center gap-4 pt-2 sm:gap-5 sm:pt-0">
+        <motion.div variants={fadeInUp} className="z-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:items-start sm:justify-between sm:gap-6 sm:text-left">
+          <div className="flex items-center justify-center gap-4 pt-2 sm:justify-start sm:gap-5 sm:pt-0">
              <Image
                src="/logo.png"
                alt="MrTrotid logo - Cybersecurity Enthusiast Portfolio"
@@ -68,7 +68,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
             </h2>
           </div>
 
-          <div className="pt-2 pr-1 text-right">
+          <div className="text-center sm:pt-2 sm:pr-1 sm:text-right">
             <h1 className="terminal-green section-title text-2xl font-semibold leading-[1.28] sm:text-5xl">
               <span className="block">{firstLine}</span>
               <span className="block">{secondLine}</span>
@@ -120,7 +120,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
           variants={fadeInUp}
           className="mt-auto space-y-[22px] pt-4 pr-0 md:space-y-0 md:pt-8 md:pr-14 lg:pr-20"
         >
-          <div className="z-10 flex justify-center gap-2 md:hidden">
+          <div className="z-10 flex w-full justify-center gap-2 lg:hidden">
             {sideLinks.map((item) => (
               <motion.a
                 key={item.href}
@@ -136,7 +136,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
             ))}
           </div>
 
-          <div className="flex items-end justify-between gap-4 md:gap-8">
+          <div className="flex flex-col items-center gap-6 text-center md:flex-row md:items-end md:justify-between md:gap-8 md:text-left">
             <div>
               <p className="text-3xl font-semibold text-white sm:text-4xl">
                 Student
@@ -147,7 +147,7 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
               <p className="sr-only">{role}</p>
             </div>
 
-            <div className="flex items-center gap-4 pb-1 text-xl">
+            <div className="flex items-center justify-center gap-4 pb-1 text-xl">
               <Magnetic strength={7}>
                 <a
                   href={links.github}

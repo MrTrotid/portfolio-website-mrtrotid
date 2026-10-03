@@ -6,7 +6,7 @@ import Image from "next/image";
 // Imports Framer Motion for animations
 import { motion } from "framer-motion";
 // Imports React hooks for state and effects
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 // Imports HackerType component for typewriter effect
 import { HackerType } from "@/components/cinematic/hacker-type";
 // Imports animation variants
@@ -25,6 +25,64 @@ type ContactSectionProps = {
     youtube: string;
     instagram: string;
   };
+};
+
+// FitLine renders its text on exactly one line, shrinking the font size
+// until it fits the available width (down to a readable minimum). The parent
+// collects every mounted FitLine's required size and passes the smallest one
+// back as `size`, so all module values share one consistent font size.
+const FitLine = ({
+  text,
+  className,
+  size,
+  onSize,
+}: {
+  text: string;
+  className?: string;
+  size: number | null;
+  onSize: (id: string, required: number) => void;
+}) => {
+  const ref = useRef<HTMLSpanElement | null>(null);
+  const id = useId();
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) {
+      return;
+    }
+
+    // Measures the largest font size that fits on one line, reports it so
+    // the parent can unify sizes, then applies the shared (smallest) size.
+    // Hidden instances (the off-breakpoint duplicate set) report infinity so
+    // they never drag the visible set's size down.
+    const apply = () => {
+      if (el.clientWidth === 0) {
+        onSize(id, Number.POSITIVE_INFINITY);
+        return;
+      }
+      el.style.fontSize = "";
+      let required = parseFloat(window.getComputedStyle(el).fontSize);
+      const min = 10;
+      while (el.scrollWidth > el.clientWidth && required > min) {
+        required -= 0.5;
+      }
+      onSize(id, required);
+      el.style.fontSize = `${size ?? required}px`;
+    };
+
+    apply();
+    // Refit after webfonts swap in (glyph widths change) and on resize
+    document.fonts?.ready.then(apply).catch(() => undefined);
+    const observer = new ResizeObserver(apply);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [text, size, onSize, id]);
+
+  return (
+    <span ref={ref} className={`block whitespace-nowrap ${className ?? ""}`}>
+      {text}
+    </span>
+  );
 };
 
 // Array of orbit link objects with positioning and labels
@@ -71,6 +129,21 @@ const orbitLinks = [
 export const ContactSection = ({ links }: ContactSectionProps) => {
   // State for terminal status line text
   const [statusLine, setStatusLine] = useState("$ idle :: waiting_for_input");
+  // Shared module-value font size: the smallest size any FitLine needs, so
+  // all four modules render at one consistent size
+  const [fitSize, setFitSize] = useState<number | null>(null);
+  // Latest reported size per FitLine; the shared size is always the minimum
+  // of the latest reports, so refits can move it up as well as down
+  const fitReports = useRef(new Map<string, number>());
+
+  // Collects each FitLine's required size and keeps the smallest
+  const reportFitSize = useCallback((childId: string, required: number) => {
+    fitReports.current.set(childId, required);
+    const min = Math.min(...fitReports.current.values());
+    if (Number.isFinite(min)) {
+      setFitSize((prev) => (prev === min ? prev : min));
+    }
+  }, []);
 
   // Effect to reset transient command feedback back to idle; skips scheduling
   // while already idle so the timer does not self-retrigger every 2s forever
@@ -136,16 +209,18 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
           <div className="absolute inset-0 opacity-[0.08] [background-image:radial-gradient(rgba(255,255,255,0.85)_0.45px,transparent_0.55px)] [background-size:3px_3px]" />
 
           {/* Terminal header with traffic lights */}
-          <div className="relative z-10 mb-5 flex items-center justify-between rounded-xl border border-[#2f6b3e]/45 bg-[#081109]/85 px-3 py-2">
-            <div className="flex items-center gap-2">
+          <div className="relative z-10 mb-5 flex items-center justify-between gap-3 overflow-hidden rounded-xl border border-[#2f6b3e]/45 bg-[#081109]/85 px-3 py-2">
+            <div className="flex shrink-0 items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full bg-[#ff6057]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
             </div>
-            {/* Terminal status line with typewriter */}
-            <p className="terminal-prompt text-xs">
-              <HackerType text={statusLine} />
-              <span className="terminal-caret ml-1 inline-block h-3 w-[2px] bg-[#39ff14] align-middle" />
+            {/* Terminal status line with typewriter (truncates instead of overflowing on narrow screens) */}
+            <p className="terminal-prompt flex min-w-0 flex-1 items-center justify-end text-xs">
+              <span className="truncate">
+                <HackerType text={statusLine} />
+              </span>
+              <span className="terminal-caret ml-1 inline-block h-3 w-[2px] shrink-0 bg-[#39ff14] align-middle" />
             </p>
           </div>
 
@@ -210,9 +285,12 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                         <p className="!text-[#9be6a8] text-xs">
                           {item.command}
                         </p>
-                        <p className="section-title mt-1 !text-[#e7ffe9] text-[17px] leading-tight">
-                          {item.value}
-                        </p>
+                        <FitLine
+                          text={item.value}
+                          size={fitSize}
+                          onSize={reportFitSize}
+                          className="section-title mt-1 !text-[#e7ffe9] text-[17px] leading-tight"
+                        />
                       </div>
                     </div>
                   </motion.a>
@@ -227,16 +305,19 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
             className="relative z-10 mt-8 grid gap-4 lg:hidden"
           >
             <div className="mx-auto flex w-full justify-center">
-              <div className="relative w-[385px] h-[385px]">
-                <div className="absolute inset-0 border border-[#42b75b]/45 bg-transparent rounded-[58%_42%_63%_37%/41%_55%_45%_59%]" />
+              <div className="relative mx-auto w-full max-w-[380px]">
                 <Image
                   src="/contact-portrait.png"
                   alt="Baman Prasad Guragain portrait"
                   width={860}
                   height={980}
-                  sizes="380px"
-                  className="absolute -bottom-1 left-1/2 h-auto w-full max-w-[380px] -translate-x-1/2 object-contain"
+                  sizes="(max-width: 1024px) 342px, 380px"
+                  className="h-auto w-full object-contain"
                   loading="lazy"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 border border-[#42b75b]/45 bg-transparent rounded-[58%_42%_63%_37%/41%_55%_45%_59%]"
                 />
               </div>
             </div>
@@ -266,9 +347,12 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                     <p className="terminal-prompt !text-[#9be6a8] text-xs">
                       {item.command}
                     </p>
-                    <p className="section-title mt-1 !text-[#e7ffe9] text-base leading-tight">
-                      {item.value}
-                    </p>
+                    <FitLine
+                      text={item.value}
+                      size={fitSize}
+                      onSize={reportFitSize}
+                      className="section-title mt-1 !text-[#e7ffe9] text-base leading-tight"
+                    />
                   </div>
                 </motion.a>
               );

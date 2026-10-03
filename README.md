@@ -1,89 +1,97 @@
-# Mrtrotid Portfolio
+# MrTrotid Portfolio
 
-![Landing Page](.docs/references/landing-page.png)
+Personal portfolio of Baman Prasad Guragain — terminal-styled, static-first, built with Next.js. Content for every section lives in one file (`lib/profile.ts`), so updating the site means editing data, not components.
 
-A modern, high-performance portfolio website built with Next.js, emphasizing typography, responsive layout, and robust security configurations. Designed with a terminal-inspired, cinematic aesthetic, this portfolio showcases projects, cybersecurity certifications, and professional experience.
+**Live:** [bamanguragain.com.np](https://www.bamanguragain.com.np) · [projects](https://projects.bamanguragain.com.np) · [certifications](https://certifications.bamanguragain.com.np) · [resume](https://resume.bamanguragain.com.np)
 
-## Live Site
+## Landing
 
-- **Production URL:** [https://www.bamanguragain.com.np](https://www.bamanguragain.com.np)
+![Landing page on desktop](.docs/references/landing-page.png)
 
-## Tech Stack
+![Landing page on mobile](.docs/references/landing-page-mobile.png)
+
+Single viewport hero: logo, name, centered section links, and socials. The ring behind it is fully static CSS — an earlier animated version caused visible flicker, so nothing on it moves. Below lg the side nav is replaced by one centered horizontal row; on phones the header stacks centered instead of clipping the name off-screen.
+
+## Projects
+
+![Projects carousel](.docs/references/projects-section.png)
+
+Featured projects in a carousel (prev/current/next with side previews on desktop). Each card states the problem, action, and result. Clicking a card opens the full write-up on the projects subdomain.
+
+## Contact terminal
+
+![Contact terminal](.docs/references/contact-section.png)
+
+A terminal window with a status line, portrait, and four executable modules (certifications, projects site, email, resume). Long domain names auto-shrink to stay on one line at a uniform size across all modules — measured live with `ResizeObserver`, floored at 10px.
+
+## Stack
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-6-blue?logo=typescript)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue?logo=typescript)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-38B2AC?logo=tailwind-css)
 ![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-black?logo=framer)
-![ESLint](https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint)
-![Playwright](https://img.shields.io/badge/Playwright-E2E-2EAD33?logo=playwright)
+![GSAP](https://img.shields.io/badge/GSAP-3-88CE02?logo=greensock)
+![Lenis](https://img.shields.io/badge/Lenis-1-black)
 ![Vitest](https://img.shields.io/badge/Vitest-Unit-6E9F18?logo=vitest)
+![Playwright](https://img.shields.io/badge/Playwright-E2E-2EAD33?logo=playwright)
+![ESLint](https://img.shields.io/badge/ESLint-9-4B32C3?logo=eslint)
 
-## Core Features
+## Performance notes
 
-- **Interactive Project Carousel:** Showcases featured projects with a custom carousel interface. Project images use `object-contain` for proper fitting. Clicking opens the full project on the external projects site.
-- **Interactive Certifications Grid:** A dynamic, filterable grid component built with Framer Motion, displaying an array of professional IT and Cybersecurity certifications (e.g., Cisco, AWS, Programiz).
-- **Simplified Footer:** Clean footer with copyright, "Back to Top" navigation link, and terminal-style closing message.
-- **Strict Security Posture:** Enforced via Next.js Proxy (`proxy.ts`). Implements rigid Content Security Policy (CSP) headers optimized for static Next.js sites, HSTS max-age, and XSS protection.
-- **Optimized SEO Architecture:** 
-  - Robust metadata generation with 150-160 char description targeting cybersecurity keywords
-  - Semantic JSON-LD structured data
-  - Targeted OpenGraph imagery (1200×630px)
-  - Automatic `sitemap.xml` / `robots.txt` generation with proper priorities
-  - Canonical URL configuration with 301 redirects from non-www to www
-- **Performance:** Pre-rendered SSG/SSR pages delivering fully populated HTML. Static imports for optimal code splitting (no hydration errors).
-- **Typography:** Styled consistently with the retro, terminal-styled `NDot-57` font across the application.
-- **Robust CI/CD Pipeline:** GitHub Actions workflow ensuring strict fail-fast sequence (`lint` → `typecheck` → `build` → `unit tests` → `E2E tests`). Protected locally with Husky `pre-push` hooks.
+Concrete things this repo does, not slogans:
 
-## Project Structure
+- `/` is prerendered static HTML (no `revalidate` opt-out, no data fetching).
+- GSAP ScrollTrigger setup is deferred to `requestIdleCallback` and skipped under reduced motion; blur-based scroll tweens were replaced with opacity/transform-only ones.
+- One smooth-scroll system: anchor clicks route through the active Lenis instance instead of fighting it with native `scrollIntoView`.
+- `optimizePackageImports` for `framer-motion` / `gsap` / `lenis`; AVIF+WebP with long cache TTL.
+- Custom cursor, magnetic hover, and the global text-scramble pass are all gated behind fine-pointer / no-reduced-motion checks; scramble-on-scroll was removed in favor of per-heading `HackerType` that animates once.
+- Card `backdrop-filter` blur is disabled below 768px.
+- Dead code was deleted, not commented out: unused `SiteNav`, the `cn` util with its `clsx`/`tailwind-merge` deps.
+
+## Security & SEO
+
+- Strict headers via `proxy.ts`: CSP tuned for static Next.js output, HSTS, XSS protection, `poweredByHeader` off.
+- Metadata with canonical URL and www redirect, JSON-LD person/website structured data, OpenGraph image (1200×630), generated `sitemap.xml` / `robots.txt` / manifest.
+
+## Project structure
 
 ```text
 ├── app/
-│   ├── layout.tsx         # Root layout with global fonts and SEO
-│   ├── page.tsx           # Main landing page assembling UI sections
-│   ├── robots.ts          # Dynamic robots.txt generation
-│   └── sitemap.ts         # Dynamic sitemap generation
+│   ├── layout.tsx         # Fonts, metadata, viewport, global effects
+│   ├── page.tsx           # Assembles all sections
+│   ├── robots.ts          # Dynamic robots.txt
+│   └── sitemap.ts         # Dynamic sitemap
 ├── components/
-│   ├── cinematic/         # Reusable animated UI elements (CustomCursor, HackerType, Magnetic)
-│   └── sections/          # Major layout blocks (Hero, Projects, Certifications, Footer)
+│   ├── cinematic/         # Cursor, scramble text, magnetic, motion layer, smooth scroll
+│   └── sections/          # Hero, about, skills, projects, experience, certs, contact, footer
 ├── lib/
-│   ├── motion/            # Shared Framer Motion animation variants
-│   ├── profile.ts         # Centralized data source for content (projects, certs)
-│   └── site.ts            # Site configuration variables (www.bamanguragain.com.np)
-├── public/                # Static assets, fonts, logos, and images
-└── proxy.ts               # Centralized Next.js proxy for security headers
+│   ├── motion/            # Shared animation variants (transform/opacity only)
+│   ├── profile.ts         # All site content
+│   ├── scroll.ts          # Lenis-aware anchor scrolling
+│   └── site.ts            # Canonical site URL
+├── public/                # Fonts, logos, portraits, project images, resumes
+└── proxy.ts               # Security headers
 ```
 
-## Featured Projects
+## Setup
 
-- **A-Level Past Paper Extractor** - Python desktop app using tkinter/customtkinter for downloading Cambridge A-Level past papers
-- **AQ Sentinel** - IoT air quality monitoring solution with ESP32 and React/Node.js
-- **MeroAushadhi** - Medicine information app with Google Generative AI and Supabase
+Requires Node.js 20.9+ (22 LTS recommended).
 
-## Setup & Local Development
+```bash
+npm install
+npm run dev      # http://localhost:3000
+```
 
-> **Requirements:** Node.js 20.9+ (Node 22 LTS recommended).
+Before pushing (also enforced by the `pre-push` hook and CI — `lint` → `typecheck` → `build` → `unit` → `e2e`):
 
-1. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
+```bash
+npm run lint
+npm run typecheck
+npm run test
+npm run test:e2e
+```
 
-2. **Run the Development Server:**
-   ```bash
-   npm run dev
-   ```
-   *The application will start on `http://localhost:3000`.*
+## Content model
 
-3. **Code Quality Checks:**
-   Before pushing, ensure all checks pass (these are also enforced via `.husky/pre-push` and GitHub Actions):
-   ```bash
-   npm run lint        # Run ESLint
-   npm run typecheck   # Run TypeScript Compiler checks
-   npm run test        # Run Unit tests
-   npm run test:e2e    # Run E2E tests
-   ```
-
-## Design Notes
-
-This project emphasizes terminal-styled realism without sacrificing accessibility. The `NDot-57` font heavily influences the uppercase/lowercase design language inherently, offering a distinct retro aesthetic. All project images are displayed with `object-contain` to ensure full visibility without cropping.
+`whoami`, `what_i_do`, skills, projects, experience, certifications, leadership, and achievements all render from `lib/profile.ts`. Skills are grouped as Languages / Security / Tools & Systems, matching the resume. Tests in `tests/unit/profile.test.ts` pin the identity fields and featured project names.

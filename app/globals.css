@@ -243,9 +243,9 @@ body.themed-cursor * {
     color: var(--soft);
 }
 
-/* Vertical side navigation on the hero */
+/* Vertical side navigation on the hero (display comes from Tailwind's
+   lg:flex; no display rule here so `hidden` keeps working below lg) */
 .side-nav-vertical {
-    display: flex;
     align-items: center;
 }
 
