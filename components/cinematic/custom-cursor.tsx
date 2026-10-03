@@ -74,28 +74,46 @@ export const CustomCursor = () => {
       return canScrollDown() ? "Scroll" : "";
     };
 
-    // Checks for fine pointer device
+    // Checks for fine pointer device; touch/coarse pointers skip every
+    // mousemove listener below so no per-event work happens on mobile
     const query = window.matchMedia("(pointer: fine)");
-    const update = () => {
+    const applyEnabled = () => {
       setEnabled(query.matches);
       document.body.classList.toggle("themed-cursor", query.matches);
       document.documentElement.classList.toggle("themed-cursor", query.matches);
     };
-    update();
-    query.addEventListener("change", update);
+    applyEnabled();
+    query.addEventListener("change", applyEnabled);
 
-     // Mouse move handler - updates cursor position with bounds checking
-     const move = (event: MouseEvent) => {
+    // Coarse pointers get no cursor listeners at all (render path already
+    // returns null), avoiding mousemove/scroll/resize work on touch devices
+    if (!query.matches) {
+      return () => {
+        query.removeEventListener("change", applyEnabled);
+      };
+    }
+
+     // Mouse move handler - rAF-throttled so rapid mousemove bursts update
+     // motion values at most once per frame instead of once per event
+     let pendingEvent: MouseEvent | null = null;
+     let pendingFrame = 0;
+     const flushMove = () => {
+       pendingFrame = 0;
+       const event = pendingEvent;
+       pendingEvent = null;
+       if (!event) {
+         return;
+       }
        // Bounds checking - hide cursor if outside viewport
        const isOutsideX = event.clientX < 0 || event.clientX > window.innerWidth;
        const isOutsideY = event.clientY < 0 || event.clientY > window.innerHeight;
-       
+
        if (isOutsideX || isOutsideY) {
          x.set(-100);
          y.set(-100);
          return;
        }
-       
+
        x.set(event.clientX);
        y.set(event.clientY);
       const target = event.target;
@@ -117,6 +135,12 @@ export const CustomCursor = () => {
       if (nextLabel !== labelRef.current) {
         labelRef.current = nextLabel;
         setLabel(nextLabel);
+      }
+    };
+    const move = (event: MouseEvent) => {
+      pendingEvent = event;
+      if (!pendingFrame) {
+        pendingFrame = requestAnimationFrame(flushMove);
       }
     };
 
@@ -150,7 +174,7 @@ export const CustomCursor = () => {
      };
 
     // Event listeners
-       window.addEventListener("mousemove", move);
+       window.addEventListener("mousemove", move, { passive: true });
        window.addEventListener("scroll", updateScrollHint, { passive: true });
        window.addEventListener("resize", updateScrollHint);
        document.addEventListener("mouseout", leave);
@@ -158,7 +182,10 @@ export const CustomCursor = () => {
 
     // Cleanup
     return () => {
-      query.removeEventListener("change", update);
+      query.removeEventListener("change", applyEnabled);
+      if (pendingFrame) {
+        cancelAnimationFrame(pendingFrame);
+      }
       window.removeEventListener("mousemove", move);
       window.removeEventListener("scroll", updateScrollHint);
       window.removeEventListener("resize", updateScrollHint);

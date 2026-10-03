@@ -25,8 +25,8 @@ import { FooterSection } from "@/components/sections/footer-section";
 // Imports profile data containing all portfolio information
 import { profile } from "@/lib/profile";
 
-// Disables static revalidation for dynamic rendering
-export const revalidate = false;
+// This page is fully static (no data fetching), so leave it prerendered
+// instead of opting out of the static cache.
 
 // Main Page component that composes all portfolio sections
 const Page = () => {
@@ -44,8 +44,11 @@ const Page = () => {
 
       {/* About section with intro and what I do */}
       <div id="about" className="space-y-2" data-panel>
-        <section className="px-6 py-12 md:px-12 lg:px-20">
-          <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2 md:items-start md:gap-8">
+        {/* Same container metrics as the hero (px + max-w) so $ whoami lines
+            up with the logo / Student block and the right column ends where
+            the name block ends */}
+        <section className="px-6 py-12 md:px-10 lg:px-14">
+          <div className="mx-auto grid w-full max-w-[1400px] gap-12 md:grid-cols-2 md:items-start md:gap-8">
             {/* About introduction */}
             <AboutSection intro={profile.intro} />
             {/* What I do list */}

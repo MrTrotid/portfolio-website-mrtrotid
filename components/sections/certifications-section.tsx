@@ -20,13 +20,13 @@ export const CertificationsSection = ({ items, certificationsUrl }: Certificatio
   const filteredItems = items.filter((item) => filter === 'All' || item.category === filter);
 
   return (
-    <section className="px-6 py-16 md:px-12 lg:px-20" data-panel>
+    <section className="px-6 py-16 md:px-10 lg:px-14" data-panel>
       <motion.div
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-12% 0px -10% 0px' }}
         variants={staggerContainer(0.1)}
-        className="mx-auto max-w-6xl"
+        className="mx-auto w-full max-w-[1400px]"
       >
         <motion.div variants={cinematicReveal} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-4 w-full">
           <h2 className="text-lg sm:text-2xl md:text-3xl whitespace-nowrap">

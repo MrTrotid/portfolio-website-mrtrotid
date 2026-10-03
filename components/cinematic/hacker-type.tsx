@@ -21,8 +21,9 @@ const TICK_MS = 33;
 export const HackerType = ({ text, className }: HackerTypeProps) => {
   // Ref for the span element
   const ref = useRef<HTMLSpanElement | null>(null);
-  // Checks if element is in viewport
-  const isInView = useInView(ref, { once: false, margin: '-10% 0px -10% 0px' });
+  // Checks if element is in viewport (scrambles once per mount instead of on
+  // every re-entry, so scrolling up/down no longer restarts 30fps setState)
+  const isInView = useInView(ref, { once: true, margin: '-10% 0px -10% 0px' });
   // State for current output text
   const [output, setOutput] = useState(text);
   // State for reduced motion preference

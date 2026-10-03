@@ -70,14 +70,14 @@ export const LeadershipSection = ({ items }: LeadershipSectionProps) => {
 
   return (
     // Section with padding
-    <section className="px-6 py-16 md:px-12 lg:px-20">
+    <section className="px-6 py-16 md:px-10 lg:px-14">
       {/* Animated container */}
       <motion.div
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-12% 0px -10% 0px' }}
         variants={staggerContainer(0.08)}
-        className="mx-auto max-w-6xl"
+        className="mx-auto w-full max-w-[1400px]"
       >
          {/* Card container */}
         <div className="rounded-3xl border border-[#2f5d38]/65 glass p-5 shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:p-6">

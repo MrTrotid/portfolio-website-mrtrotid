@@ -21,14 +21,14 @@ type ExperienceSectionProps = {
 export const ExperienceSection = ({ items }: ExperienceSectionProps) => {
   return (
     // Section with padding
-    <section className="px-6 py-16 md:px-12 lg:px-20">
+    <section className="px-6 py-16 md:px-10 lg:px-14">
       {/* Animated container with stagger */}
       <motion.div
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-12% 0px -10% 0px' }}
         variants={staggerContainer(0.12)}
-        className="mx-auto max-w-6xl"
+        className="mx-auto w-full max-w-[1400px]"
       >
         {/* Terminal command with typewriter */}
         <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl">

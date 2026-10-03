@@ -16,6 +16,16 @@ import { StructuredData } from '@/components/cinematic/structured-data';
 import { siteUrl } from "@/lib/site";
 // Imports Vercel Analytics component
 import { Analytics } from '@vercel/analytics/next';
+// Imports viewport type for theme-color configuration
+import type { Viewport } from "next";
+
+// Viewport configuration (theme color + color scheme)
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
+};
 
 // Configures Manrope font with latin subset and CSS variable
 const manrope = Manrope({

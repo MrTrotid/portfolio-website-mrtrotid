@@ -72,8 +72,12 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
   // State for terminal status line text
   const [statusLine, setStatusLine] = useState("$ idle :: waiting_for_input");
 
-  // Effect to reset status line after delay
+  // Effect to reset transient command feedback back to idle; skips scheduling
+  // while already idle so the timer does not self-retrigger every 2s forever
   useEffect(() => {
+    if (statusLine === "$ idle :: waiting_for_input") {
+      return;
+    }
     const timer = window.setTimeout(() => {
       setStatusLine("$ idle :: waiting_for_input");
     }, 2000);
@@ -169,6 +173,7 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                      alt="Portrait of Baman Prasad Guragain (MrTrotid), Cybersecurity Enthusiast"
                      width={860}
                      height={980}
+                     sizes="(max-width: 1024px) 380px, 560px"
                      className="absolute -bottom-1 left-1/2 h-auto w-full max-w-[560px] -translate-x-1/2 object-contain"
                      loading="lazy"
                    />
@@ -227,8 +232,9 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                 <Image
                   src="/contact-portrait.png"
                   alt="Baman Prasad Guragain portrait"
-                  width={760}
-                  height={880}
+                  width={860}
+                  height={980}
+                  sizes="380px"
                   className="absolute -bottom-1 left-1/2 h-auto w-full max-w-[380px] -translate-x-1/2 object-contain"
                   loading="lazy"
                 />

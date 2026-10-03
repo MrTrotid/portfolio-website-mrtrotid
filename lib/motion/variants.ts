@@ -32,13 +32,13 @@ export const revealScale: Variants = {
   },
 };
 
-// Cinematic reveal - element fades in with blur effect
+// Cinematic reveal - element fades in while rising (transform/opacity only;
+// blur filters force costly repaints on scroll, so they are intentionally avoided)
 export const cinematicReveal: Variants = {
-  hidden: { opacity: 0, y: 36, filter: 'blur(10px)' },
+  hidden: { opacity: 0, y: 36 },
   show: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
   },
 };

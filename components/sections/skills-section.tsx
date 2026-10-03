@@ -11,7 +11,7 @@ import { fadeInUp, revealScale, staggerContainer } from '@/lib/motion/variants';
 // Type for skills section props
 type SkillsSectionProps = {
   skills: {
-    frontend: readonly string[];
+    languages: readonly string[];
     security: readonly string[];
     tools: readonly string[];
   };
@@ -43,13 +43,13 @@ const SkillGroup = ({ label, values }: { label: string; values: readonly string[
 // Skills section - displays categorized skills
 export const SkillsSection = ({ skills }: SkillsSectionProps) => {
   return (
-    <section className="px-6 py-16 md:px-12 lg:px-20">
+    <section className="px-6 py-16 md:px-10 lg:px-14">
       <motion.div
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-12% 0px -10% 0px' }}
         variants={staggerContainer(0.1)}
-        className="mx-auto max-w-6xl"
+        className="mx-auto w-full max-w-[1400px]"
       >
         {/* Terminal command */}
         <motion.h2 variants={fadeInUp} className="text-2xl sm:text-3xl">
@@ -57,9 +57,9 @@ export const SkillsSection = ({ skills }: SkillsSectionProps) => {
         </motion.h2>
         {/* Skills grid */}
         <motion.div variants={staggerContainer(0.1)} className="mt-8 grid gap-4 md:grid-cols-3">
-          <SkillGroup label="Frontend" values={skills.frontend} />
+          <SkillGroup label="Languages" values={skills.languages} />
           <SkillGroup label="Security" values={skills.security} />
-          <SkillGroup label="Tools" values={skills.tools} />
+          <SkillGroup label="Tools & Systems" values={skills.tools} />
         </motion.div>
       </motion.div>
     </section>

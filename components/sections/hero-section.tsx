@@ -9,6 +9,8 @@ import Image from "next/image";
 import { Magnetic } from '@/components/cinematic/magnetic';
 // Imports animation variants
 import { fadeInUp, staggerContainer } from "@/lib/motion/variants";
+// Imports shared anchor-scroll helper (Lenis-aware)
+import { scrollToSelector } from "@/lib/scroll";
 
 // Type definition for hero section props
 type HeroSectionProps = {
@@ -37,15 +39,10 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
   const firstLine = "Baman Prasad";
   const secondLine = "Guragain";
 
-  // Handle navigation click with smooth scroll
+  // Handle navigation click with smooth scroll (via shared Lenis-aware helper)
   const handleNavClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     event.preventDefault();
-    const section = document.querySelector(href);
-    if (!section) {
-      return;
-    }
-
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToSelector(href);
   };
 
   return (
@@ -83,22 +80,17 @@ export const HeroSection = ({ name, alias, role, links }: HeroSectionProps) => {
           variants={fadeInUp}
           className="pointer-events-none absolute inset-0 grid place-items-center"
         >
-          <motion.div
-            animate={{
-              scale: [1, 1.018, 1],
-              boxShadow: [
-                "0 0 30px rgba(57,255,20,0.22), inset 0 0 40px rgba(57,255,20,0.08)",
-                "0 0 60px rgba(57,255,20,0.35), inset 0 0 60px rgba(57,255,20,0.12)",
-                "0 0 30px rgba(57,255,20,0.22), inset 0 0 40px rgba(57,255,20,0.08)",
-              ],
-            }}
-            transition={{
-              duration: 5.5,
-              ease: "easeInOut",
-              repeat: Number.POSITIVE_INFINITY,
-            }}
-            className="hero-ring h-[70vw] w-[70vw] max-h-[600px] max-w-[600px] min-h-[260px] min-w-[260px] rounded-full border-[14px] border-[#39ff14] md:h-[46vw] md:w-[46vw] md:min-h-[340px] md:min-w-[340px] md:border-[18px]"
-          />
+          {/* Static ring: the previous infinite framer-motion box-shadow/scale
+              loop rewrote inline styles every frame on top of a drop-shadow
+              filter, forcing a full repaint each tick — that repaint shimmer
+              is the visible flicker. The glow now breathes via a CSS opacity
+              pulse on a separate layer (compositor-only, zero repaints). */}
+          {/* Glass ring: fully static — glow and refractive sheen are baked-in
+              layers with zero animation, so the neon band can never shimmer. */}
+          <div className="hero-ring relative h-[70vw] w-[70vw] max-h-[600px] max-w-[600px] min-h-[260px] min-w-[260px] rounded-full border-[14px] border-[#39ff14] md:h-[46vw] md:w-[46vw] md:min-h-[340px] md:min-w-[340px] md:border-[18px]">
+            <div aria-hidden className="hero-ring-glow absolute inset-0 rounded-full" />
+            <div aria-hidden className="hero-ring-sheen absolute inset-0 rounded-full" />
+          </div>
         </motion.div>
 
         <motion.aside

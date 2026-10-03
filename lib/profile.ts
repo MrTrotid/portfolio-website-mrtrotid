@@ -50,30 +50,34 @@ export const profile = {
   alias: "MrTrotid",
   role: "Cybersecurity Enthusiast & Creative Developer",
   intro:
-    "Cybersecurity enthusiast and developer focused on modern web applications and practical security.",
+    "CS student at Kathmandu University and cybersecurity enthusiast, with A-Level distinctions in Maths and Computer Science. I build across networking, Linux, Python, and cloud — co-created the award-winning AQ Sentinel IoT monitor. Cisco-certified, with 31+ certifications.",
   whatIDo: [
-    "Build experimental web projects",
-    "Explore security vulnerabilities",
-    "Work with modern technologies",
-    "Learn and apply cybersecurity concepts",
-    "Collaborate on innovative ideas",
+    "Practice cybersecurity and networking fundamentals (Cisco-certified)",
+    "Explore the tech world — Linux, Python, Docker, and AWS cloud",
+    "Build websites and backends for clubs and communities",
+    "Write SEO tech content at Gadgetbyte Nepal",
+    "Organise events and meetups, from Math Mania to alumni homecomings",
+    "Live life offline — travel, friends, and open source",
   ],
   skills: {
-    frontend: [
-      "Next.js",
-      "TypeScript",
-      "React",
-      "Tailwind CSS",
-      "Framer Motion",
-      "GSAP",
+    languages: [
+      "Python (Intermediate)",
+      "JavaScript (Basics)",
+      "C / C++ (Basics)",
+      "Bash / Shell",
+      "SQL (Basics)",
     ],
     security: [
-      "OWASP Top 10",
-      "Threat Modeling",
-      "Web App Security",
-      "Security Testing",
+      "Networking Fundamentals (Cisco)",
+      "Basic Firewall Concepts",
+      "Intro to Cybersecurity (Cisco)",
     ],
-    tools: ["Git", "Linux", "Playwright", "Vitest", "Figma", "GitHub Actions"],
+    tools: [
+      "Linux (Debian/Arch)",
+      "Docker (Beginner)",
+      "Git & Version Control",
+      "AWS EC2/S3/IAM (Beginner)",
+    ],
   },
   projects: [
     {

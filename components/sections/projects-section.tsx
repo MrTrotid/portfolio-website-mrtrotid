@@ -54,14 +54,14 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
 
   return (
     // Section with panel data attribute
-    <section className="px-6 py-20 md:px-12 lg:px-20" data-panel>
+    <section className="px-6 py-20 md:px-10 lg:px-14" data-panel>
       {/* Animated container */}
       <motion.div
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: '-12% 0px -10% 0px' }}
         variants={staggerContainer(0.1)}
-        className="mx-auto max-w-6xl"
+        className="mx-auto w-full max-w-[1400px]"
       >
           {/* Header with title */}
           <motion.div variants={cinematicReveal} className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-4 w-full">
@@ -132,15 +132,15 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             <p className="content-muted mt-2 truncate text-[10px] tracking-[0.14em] md:text-xs">{previous.name}</p>
           </motion.article>
 
-          {/* Current project display with animation */}
+          {/* Current project display with animation (transform/opacity only;
+              3D rotateX/rotateY tilts force extra compositing work per frame) */}
           <AnimatePresence mode="wait">
             <motion.article
               key={currentProject.name}
-              initial={{ opacity: 0, x: direction * 38, y: 10, scale: 0.985, rotateY: direction * 6 }}
-              animate={{ opacity: 1, x: 0, y: 0, scale: 1, rotateY: 0 }}
-              exit={{ opacity: 0, x: direction * -38, y: -8, scale: 0.985, rotateY: direction * -6 }}
+              initial={{ opacity: 0, x: direction * 38, y: 10, scale: 0.985 }}
+              animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+              exit={{ opacity: 0, x: direction * -38, y: -8, scale: 0.985 }}
               transition={{ duration: 0.52, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ rotateX: 2, rotateY: -2, scale: 1.005 }}
               onClick={openCurrentProject}
               onKeyDown={(event) => {
                 if (event.key === 'Enter' || event.key === ' ') {
@@ -158,7 +158,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
               <div className="relative h-56 overflow-hidden rounded-2xl border border-white/15 bg-[#0a1a10] sm:h-64 md:h-72">
                <Image
                    src={currentProject.image}
-                   alt="Screenshot of ${currentProject.name} project"
+                   alt={`Screenshot of ${currentProject.name} project`}
                    fill
                    sizes="(max-width: 768px) 92vw, 850px"
                    className="object-contain p-2"
@@ -218,7 +218,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             className="glass pointer-events-none hidden overflow-hidden rounded-2xl p-2 md:block md:p-3"
           >
             <div className="relative h-28 overflow-hidden rounded-xl bg-[#0a1a10] md:h-44">
-               <Image src={next.image} alt="Screenshot of ${next.name} project" fill sizes="22vw" className="object-contain opacity-80 p-1" loading="lazy" />
+               <Image src={next.image} alt={`Screenshot of ${next.name} project`} fill sizes="22vw" className="object-contain opacity-80 p-1" loading="lazy" />
             </div>
             <p className="content-muted mt-2 truncate text-[10px] tracking-[0.14em] md:text-xs">{next.name}</p>
           </motion.article>
