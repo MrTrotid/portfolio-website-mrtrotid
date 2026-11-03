@@ -70,8 +70,9 @@ export const metadata: Metadata = {
   authors: [{ name: 'Baman Prasad Guragain', url: siteUrl }],
   creator: 'Baman Prasad Guragain (MrTrotid)',
   publisher: 'Baman Prasad Guragain',
+  manifest: '/manifest.webmanifest',
   alternates: {
-    canonical: "/",
+    canonical: `${siteUrl}/`,
   },
   robots: {
     index: true,
@@ -90,29 +91,34 @@ export const metadata: Metadata = {
       process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
       "pending-google-verification-token",
   },
-   openGraph: {
-     title: 'Baman Prasad Guragain (MrTrotid) | Cybersecurity Enthusiast',
-     description:
-       'Portfolio of Baman Prasad Guragain (MrTrotid) - Cybersecurity Enthusiast from Nepal exploring network security, coding, and open source development.',
-     type: "website",
-     siteName: 'Baman Prasad Guragain Portfolio',
-     locale: 'en_US',
-     url: siteUrl,
-     images: [
-       {
-         url: "/og-image.png",
-         width: 1200,
-         height: 630,
-         alt: "Baman Prasad Guragain portfolio preview",
-       },
-     ],
-   },
-   twitter: {
-     card: "summary_large_image",
-     title: 'Baman Prasad Guragain (MrTrotid) | Cybersecurity Enthusiast',
-     description: 'Portfolio of Baman Prasad Guragain (MrTrotid) - Cybersecurity Enthusiast from Nepal exploring network security, coding, and open source development.',
-     images: ["/og-image.png"],
-   },
+  openGraph: {
+    title: 'Baman Prasad Guragain (MrTrotid) | Cybersecurity Enthusiast',
+    description:
+      'Portfolio of Baman Prasad Guragain (MrTrotid) - Cybersecurity Enthusiast from Nepal exploring network security, coding, and open source development.',
+    type: "website",
+    siteName: 'Baman Prasad Guragain Portfolio',
+    locale: 'en_US',
+    url: `${siteUrl}/`,
+    images: [
+      {
+        url: `${siteUrl}/og-image.png`,
+        secureUrl: `${siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Baman Prasad Guragain (MrTrotid) portfolio preview",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@mrtrotid",
+    creator: "@mrtrotid",
+    title: 'Baman Prasad Guragain (MrTrotid) | Cybersecurity Enthusiast',
+    description:
+      'Portfolio of Baman Prasad Guragain (MrTrotid) - Cybersecurity Enthusiast from Nepal exploring network security, coding, and open source development.',
+    images: [`${siteUrl}/og-image.png`],
+  },
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },

@@ -270,9 +270,9 @@ export const profile = {
     resume: "https://resume.bamanguragain.com.np",
     email: "mailto:contact@bamanguragain.com.np",
     github: "https://github.com/mrtrotid",
-    linkedin: "https://linkedin.com/in/mrtrotid",
+    linkedin: "https://www.linkedin.com/in/mrtrotid/",
     x: "https://x.com/mrtrotid",
-    youtube: "https://youtube.com/@mrtrotid",
-    instagram: "https://instagram.com/mrtrotid",
+    youtube: "https://www.youtube.com/@mrtrotid",
+    instagram: "https://www.instagram.com/mrtrotid/",
   },
 } as const;

@@ -13,6 +13,7 @@ export const FooterSection = () => {
           
           <a 
             href="#top" 
+            aria-label="Back to top of page"
             className="text-xs text-[#8b949e] transition-colors hover:text-[#39ff14]"
           >
             ↑ Back to Top

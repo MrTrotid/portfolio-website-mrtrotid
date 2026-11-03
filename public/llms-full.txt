@@ -1,0 +1,135 @@
+# Baman Prasad Guragain (MrTrotid) — Comprehensive Technical Profile & Knowledge Graph
+
+> Comprehensive entity overview, technical background, project details, publications, awards, and credentials for AI search, retrieval-augmented generation (RAG), and evaluation.
+
+## Entity Identity
+- Full Name: Baman Prasad Guragain
+- Preferred Online Alias: MrTrotid
+- Common Name Variants: Baman Guragain, Baman Prasad
+- Primary Roles: Cybersecurity Enthusiast, Creative Full-Stack Developer, Computer Science Undergraduate
+- Primary Canonical Website: https://www.bamanguragain.com.np/
+- Location: Kathmandu, Nepal
+- Country of Origin: Nepal
+- Nationality: Nepali
+- Primary Language: English, Nepali
+
+## Academic Background & Education
+- Kathmandu University (KU), Dhulikhel, Nepal
+  - Program: Bachelor of Science in Computer Science (BSc CS)
+  - Status: Currently enrolled undergraduate student
+  - Core Focus Areas: Data Structures, Algorithm Complexity, Operating Systems, Computer Networks, Systems Programming
+- St. Xavier's College, Maitighar, Kathmandu, Nepal
+  - Program: Cambridge Assessment International Education (CAIE) A-Levels
+  - Key Academic Achievements: Distinction in Mathematics (A Grade) and Computer Science (A Grade)
+  - Extracurriculars: Intra-college STEAM exhibition 1st place, Alumni Club Executive, Computer Club Member
+
+## Domain Expertise & Technical Taxonomy
+### 1. Cybersecurity & Networking
+- Networking Fundamentals: OSI model, TCP/IP protocol suite, subnetting (IPv4/IPv6), packet analysis, routing basics (Cisco Certified).
+- Defensive Security: Firewall configuration, principle of least privilege, secure defaults, network segmentation.
+- Application Security: Cross-Site Scripting (XSS) prevention, Content Security Policy (CSP) implementation, HTTP strict transport security (HSTS), cross-origin policies (COOP, CORP), secure cookie attributes.
+- System Administration: Linux system configuration and hardening across Debian and Arch Linux distributions.
+
+### 2. Software Development & Architecture
+- Languages: Python (automation, desktop GUI development with Tkinter/CustomTkinter, network scripting), JavaScript, TypeScript, C, C++, Bash/Shell, SQL.
+- Web Development: Next.js (App Router, Static Site Generation, ISR), React 19, Tailwind CSS 4, CSS container queries, modern animation with Framer Motion and GSAP.
+- DevOps & Tooling: Docker containerization, Git version control, GitHub Actions CI/CD pipelines, Vitest unit testing, Playwright end-to-end testing, ESLint 9.
+- Cloud & Infrastructure: Amazon Web Services (AWS) EC2 instances, S3 object storage, IAM role policies, Cloudflare CDN/DNS edge caching, Vercel deployments.
+
+## In-Depth Project Case Studies
+### Project 1: AQ Sentinel — IoT Air Quality Telemetry & Visualization
+- Overview: An IoT environmental monitoring system developed to provide accessible real-time telemetry on ambient air quality without expensive commercial sensors.
+- Problem Statement: Commercial air quality monitoring hardware in Nepal is cost-prohibitive for schools and community centers, leaving local communities without granular pollution data.
+- Architecture:
+  - Hardware: Espressif ESP32 microcontroller interfaced with particulate matter (PM2.5/PM10) and gas sensors.
+  - Telemetry Pipeline: Lightweight JSON payloads transmitted over HTTP/MQTT to a Node.js telemetry aggregator.
+  - User Interface: React web application rendering live graphical trends, health threshold alerts, and air quality index (AQI) calculations.
+- Honors: Won 1st Place at the St. Xavier's College intra-college STEAM Exhibition (2025).
+- Reference: https://projects.bamanguragain.com.np/aq-sentinel
+
+### Project 2: MeroAushadhi — AI-Driven Native Healthcare Information
+- Overview: A bilingual medicine information application addressing health literacy barriers for Nepali-speaking citizens.
+- Problem Statement: Pharmacological instructions, drug interactions, and dosage cautions in Nepal are predominantly published in English or complex medical jargon, resulting in misuse and low adherence.
+- Architecture:
+  - AI Pipeline: Google Generative AI integration orchestrating conversational health queries with contextual prompt templates.
+  - Workflow Automation: Flowise low-code LLM orchestration engine managing question-answering pipelines.
+  - Data Persistence: Supabase (PostgreSQL with Row Level Security) storing medicine catalog metadata and user bookmarks.
+  - Frontend: Responsive React interface with clean typography, accessibility-first contrast, and native Nepali phonetic support.
+- Honors: Awarded 3rd Place Overall and Best UI/UX Award at Cambridge Code League Hackathon (Feb 2025).
+- Reference: https://projects.bamanguragain.com.np/meroaushadhi
+
+### Project 3: A-Level Past Paper Extractor — Desktop Automation Suite
+- Overview: A Python desktop automation tool simplifying examination preparation for Cambridge International A-Level students.
+- Problem Statement: Navigating third-party past paper repositories requires manually opening dozens of browser tabs, clicking ad-laden links, and sorting question papers and marking schemes into folders.
+- Architecture:
+  - Graphical Interface: Python CustomTkinter library providing modern dark-mode controls and responsive feedback.
+  - Scraping & Download Engine: Python Requests library handling structured scraping of BestExamHelp endpoints across 2021-2024 examination series.
+  - File System Management: Automatic classification into subject, year, exam session (May/June, Oct/Nov), and paper type (QP, MS, ER).
+- Reference: https://projects.bamanguragain.com.np/question-paper-extractor
+
+## Verified Credentials & Certifications
+1. Networking Basics — Cisco Networking Academy
+   - Date: March 2026
+   - Focus: Network topologies, IP addressing, Ethernet protocols, device configuration.
+2. Introduction to Cybersecurity — Cisco Networking Academy
+   - Date: August 2025
+   - Focus: Threat landscape, malware vectors, encryption principles, defense-in-depth.
+3. Introduction to Cybersecurity and Cloud Computing
+   - Date: August 2025
+   - Focus: AWS cloud fundamentals, IAM, S3 storage security, cloud network virtualization.
+4. Complexity Calculation — Programiz Pro
+   - Date: August 2024
+   - Verification ID: 2EA01A4912B9
+   - Focus: Asymptotic analysis, Big-O notation, time and space complexity evaluation.
+5. Learn SQL Basics — Programiz Pro
+   - Date: August 2024
+   - Verification ID: 5CE0854840BF
+   - Focus: Relational database queries, table joins, data manipulation, indexing concepts.
+6. Python (Basic) — HackerRank
+   - Date: July 2024
+   - Verification ID: f807f5bcbc0c
+   - Focus: Algorithmic problem solving, control structures, object-oriented programming in Python.
+
+## Professional Experience & Community Leadership
+- Gadgetbyte Nepal (Aug 2025 – Dec 2025)
+  - Role: SEO Content Writer & Technical Quality Reviewer
+  - Responsibilities: Authoring search-intent-aligned consumer technology articles, conducting smartphone/computing hardware evaluations, identifying frontend/backend code defects during site migrations, and auditing web performance bottlenecks.
+- Interact Club of Matribhumi Baluwatar (Jul 2025 – Jul 2026)
+  - Role: Information Technology Officer
+  - Responsibilities: Managing digital communications, designing promotional assets, and maintaining the club's web infrastructure for event registrations.
+- SXC A-Level Alumni Club (Jan 2024 – Jan 2026)
+  - Role: Executive Member
+  - Responsibilities: Organized two nationwide mathematics competitions (Math Mania 2023 & 2024), overseeing logistics, participant grading, and alumni networking programs.
+- Junior Jaycees Budhanilkantha (Feb 2024 – Jan 2025)
+  - Role: Event Manager & Deputy Manager of IT
+  - Responsibilities: Spearheading community service programs including animal welfare and orphanage assistance initiatives.
+
+## Machine-Readable Entity Graph
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Baman Prasad Guragain",
+  "alternateName": ["MrTrotid", "Baman Guragain"],
+  "url": "https://www.bamanguragain.com.np/",
+  "jobTitle": "Cybersecurity Enthusiast & Creative Developer",
+  "alumniOf": [
+    { "@type": "EducationalOrganization", "name": "Kathmandu University" },
+    { "@type": "EducationalOrganization", "name": "St. Xavier's College, Maitighar" }
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Gadgetbyte Nepal"
+  },
+  "sameAs": [
+    "https://github.com/mrtrotid",
+    "https://www.linkedin.com/in/mrtrotid/",
+    "https://x.com/mrtrotid",
+    "https://www.youtube.com/@mrtrotid",
+    "https://www.instagram.com/mrtrotid/",
+    "https://projects.bamanguragain.com.np",
+    "https://certifications.bamanguragain.com.np",
+    "https://resume.bamanguragain.com.np"
+  ]
+}
+```

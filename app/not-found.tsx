@@ -1,5 +1,15 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { HackerType } from '@/components/cinematic/hacker-type';
+
+export const metadata: Metadata = {
+  title: '404 - Page Not Found | Baman Prasad Guragain (MrTrotid)',
+  description: 'The requested page could not be found on Baman Prasad Guragain portfolio.',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function NotFound() {
   return (

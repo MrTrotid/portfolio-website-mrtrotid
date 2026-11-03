@@ -36,11 +36,13 @@ const FitLine = ({
   className,
   size,
   onSize,
+  isEmail,
 }: {
   text: string;
   className?: string;
   size: number | null;
   onSize: (id: string, required: number) => void;
+  isEmail?: boolean;
 }) => {
   const ref = useRef<HTMLSpanElement | null>(null);
   const id = useId();
@@ -77,6 +79,16 @@ const FitLine = ({
     observer.observe(el);
     return () => observer.disconnect();
   }, [text, size, onSize, id]);
+
+  if (isEmail) {
+    return (
+      <span
+        ref={ref}
+        className={`block whitespace-nowrap ${className ?? ""}`}
+        dangerouslySetInnerHTML={{ __html: `<!--email_off-->${text}<!--/email_off-->` }}
+      />
+    );
+  }
 
   return (
     <span ref={ref} className={`block whitespace-nowrap ${className ?? ""}`}>
@@ -229,6 +241,7 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
             variants={fadeInUp}
             className="terminal-prompt relative z-10 text-center text-2xl sm:text-3xl"
           >
+            <span className="sr-only">Contact</span>
             <span className="text-[#8b949e]">$</span>{" "}
             <HackerType text="ls -la modules/" />
           </motion.h2>
@@ -270,7 +283,7 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                    }
                    data-cursor="details"
                    data-cursor-label="Execute Module"
-                   rel="noopener noreferrer nofollow"
+                   rel={external ? "noopener noreferrer" : undefined}
                    className={`absolute z-30 w-full max-w-[360px] ${item.className}`}
                    whileHover={{ y: -5, scale: 1.01 }}
                    whileTap={{ scale: 0.99 }}
@@ -289,6 +302,7 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                           text={item.value}
                           size={fitSize}
                           onSize={reportFitSize}
+                          isEmail={item.id === "email"}
                           className="section-title mt-1 !text-[#e7ffe9] text-[17px] leading-tight"
                         />
                       </div>
@@ -325,6 +339,8 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
             {orbitLinks.map((item) => {
               const href = links[item.hrefKey];
 
+              const isExternal = href?.startsWith("http");
+
               return (
                 <motion.a
                   key={item.id}
@@ -335,6 +351,7 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                   }
                   data-cursor="details"
                   data-cursor-label="Execute Module"
+                  rel={isExternal ? "noopener noreferrer" : undefined}
                   whileHover={{ y: -4 }}
                   className="overflow-hidden rounded-xl border border-[#2e8246]/45 bg-[#09130b]/85"
                 >
@@ -351,6 +368,7 @@ export const ContactSection = ({ links }: ContactSectionProps) => {
                       text={item.value}
                       size={fitSize}
                       onSize={reportFitSize}
+                      isEmail={item.id === "email"}
                       className="section-title mt-1 !text-[#e7ffe9] text-base leading-tight"
                     />
                   </div>

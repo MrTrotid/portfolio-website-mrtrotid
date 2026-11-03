@@ -6,7 +6,7 @@ import { siteUrl } from '@/lib/site';
 // Strips trailing slash from base URL
 const base = siteUrl.replace(/\/$/, '');
 
-// Generates sitemap configuration for SEO
+// Generates sitemap configuration for SEO (canonical document URLs only)
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -15,37 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${base}/`,
       lastModified: now,
       changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${base}/#about`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${base}/#projects`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${base}/#experience`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${base}/#certifications`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${base}/#contact`,
-      lastModified: now,
-      changeFrequency: 'yearly',
-      priority: 0.5,
+      priority: 1.0,
     },
   ];
 }

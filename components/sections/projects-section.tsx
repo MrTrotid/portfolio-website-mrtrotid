@@ -74,7 +74,7 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
             <a
               href={projectsUrl}
               target="_blank"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer"
               data-cursor="project"
               className="external-indicator inline-flex items-center justify-center rounded-full border border-[#4bb964]/35 bg-[#0c1b10]/70 px-3 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-xs tracking-widest text-[#d5ffe0] transition-colors hover:bg-[#14321b] whitespace-nowrap"
             >
@@ -171,7 +171,19 @@ export const ProjectsSection = ({ projects, projectsUrl }: ProjectsSectionProps)
                   <span className="text-[#8b949e]">#</span>
                   {currentProject.year}
                 </p>
-                <h3 className="content-title section-title text-xl sm:text-2xl">{currentProject.name}</h3>
+                <h3 className="content-title section-title text-xl sm:text-2xl">
+                  <a
+                    href={currentProject.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="hover:text-[#39ff14] transition-colors inline-flex items-center justify-center gap-1.5"
+                    aria-label={`Open project details for ${currentProject.name}`}
+                  >
+                    {currentProject.name}
+                    <span className="text-sm text-[#39ff14]/70" aria-hidden>↗</span>
+                  </a>
+                </h3>
                 
                 <div className="content-muted mx-auto max-w-2xl text-sm leading-relaxed text-left sm:text-center space-y-2">
                   {Array.isArray(currentProject.summary) ? (

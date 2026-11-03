@@ -19,5 +19,5 @@ test('mobile layout keeps navigation available', async ({ page }) => {
   // Navigate to home page
   await page.goto('/');
   // Verifies Projects link is visible on mobile
-  await expect(page.getByRole('link', { name: 'Projects' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Projects', exact: true })).toBeVisible();
 });
